@@ -1,0 +1,19 @@
+version: '2'
+services:
+  users:
+    container_name: users
+    restart: always
+    build:
+      context: ./users
+      dockerfile: mysql.dockerfile
+    ports:
+      - '3301:3306'
+
+  fighters:
+    container_name: fighters
+    restart: always
+    build:
+      context: ./fighters
+      dockerfile: mysql.dockerfile
+    ports:
+      - '3302:3306'
