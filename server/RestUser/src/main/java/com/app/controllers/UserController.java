@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.app.Models.User;
 import com.app.errors.ErrorRest;
-import com.app.repositories.UserRespository;
+import com.app.repositories.UserRepository;
 
 
 @RestController
@@ -25,7 +25,7 @@ import com.app.repositories.UserRespository;
 public class UserController {
 
 	@Autowired
-	UserRespository userRepository;
+	UserRepository userRepository;
 	
 	@GetMapping("/")
 	public ResponseEntity<?> getUsers() {

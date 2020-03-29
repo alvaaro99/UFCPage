@@ -7,6 +7,6 @@ import com.app.Models.User;
 import  org.springframework.data.jpa.repository.JpaRepository;
 
 @Repository
-public interface UserRespository extends JpaRepository<User,Long> {
+public interface UserRepository extends JpaRepository<User,Long> {
 
 }
