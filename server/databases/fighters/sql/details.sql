@@ -1,4 +1,4 @@
-create table detalles
+create table details
 (
     Name      text null,
     Height    text null,
