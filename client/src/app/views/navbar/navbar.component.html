@@ -1,11 +1,23 @@
 <nav class="navbar navbar-dark bg-dark">
   <div class="nav-item">
-    <a class="nav-link">RANKING</a>
+    <a
+      class="nav-link"
+      [routerLink]="['ranking']"
+      routerLinkActive="text-danger"
+      >RANKING</a
+    >
   </div>
   <div class="nav-item">
-    <a class="nav-link">SIMULADOR</a>
+    <a
+      class="nav-link"
+      [routerLink]="['simulator']"
+      routerLinkActive="text-danger"
+      >SIMULADOR</a
+    >
   </div>
   <div class="nav-item">
-    <a class="nav-link">TIENDA</a>
+    <a class="nav-link" [routerLink]="['shop']" routerLinkActive="text-danger"
+      >TIENDA</a
+    >
   </div>
 </nav>
