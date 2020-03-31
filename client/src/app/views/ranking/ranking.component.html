@@ -1,1 +1,37 @@
-<p>ranking works!</p>
+<table class="table text-center table-striped">
+  <thead>
+    <th>Puesto</th>
+    <th>Luchador</th>
+    <th>
+      <select [(ngModel)]="weightToShow">
+        <option value="all">Peso - Todos</option>
+        <option value="libra por libra">Peso - Libra por Libra</option>
+        <optgroup label="Femenino">
+          <option value="paja fem">Peso - Paja</option>
+          <option value="mosca fem">Peso - Mosca</option>
+          <option value="gallo fem">Peso - Gallo</option>
+          <option value="pluma fem">Peso - Pluma</option>
+        </optgroup>
+        <optgroup label="Masculino">
+          <option value="mosca">Peso - Mosca</option>
+          <option value="gallo">Peso - Gallo</option>
+          <option value="pluma">Peso - Pluma</option>
+          <option value="ligero">Peso - Ligero</option>
+          <option value="medio">Peso - Medio</option>
+          <option value="welter">Peso - Welter</option>
+          <option value="semipesado">Peso - Semipesado</option>
+          <option value="pesado">Peso - Pesado</option>
+        </optgroup>
+      </select>
+    </th>
+    <th>Fecha</th>
+  </thead>
+  <tbody>
+    <tr *ngFor="let fighter of ranking | weight: weightToShow">
+      <td>{{ fighter.rank }}</td>
+      <td>{{ fighter.name }}</td>
+      <td>{{ fighter.weightclass | titlecase }}</td>
+      <td>{{ fighter.date | date: "dd-MM-yyyy" }}</td>
+    </tr>
+  </tbody>
+</table>

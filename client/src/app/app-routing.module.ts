@@ -7,7 +7,8 @@ import { SimulatorComponent } from './views/simulator/simulator.component';
 const routes: Routes = [
   { path: 'ranking', component: RankingComponent },
   { path: 'shop', component: ShopComponent },
-  { path: 'simulator', component: SimulatorComponent }
+  { path: 'simulator', component: SimulatorComponent },
+  { path: '**', component: RankingComponent }
 ];
 
 @NgModule({
