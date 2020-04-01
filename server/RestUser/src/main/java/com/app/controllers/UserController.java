@@ -28,14 +28,14 @@ public class UserController {
 	UserRepository userRepository;
 	
 	@GetMapping("/")
-	public ResponseEntity<?> getUsers() {
+	public ResponseEntity<?> getAll() {
 		List<User> result = userRepository.findAll();
 		if(!result.isEmpty()) return new ResponseEntity<List<User>>(result, HttpStatus.OK);
 		return new ResponseEntity<ErrorRest>(new ErrorRest("No hay usuarios"),HttpStatus.NOT_FOUND);
 	}
 	
 	@GetMapping("/{id}") 
-	public ResponseEntity<?> getUser(@PathVariable Long id) {
+	public ResponseEntity<?> getOne(@PathVariable Long id) {
 		Optional<User> result = userRepository.findById(id);
 		if(result.isEmpty()) return new ResponseEntity<ErrorRest>(new ErrorRest("No hay usuario con el ID "+id),HttpStatus.NOT_FOUND);
 			return new ResponseEntity<Optional<User>>(result,HttpStatus.OK);
@@ -43,7 +43,7 @@ public class UserController {
 	}
 	
 	@PostMapping("/")
-	public ResponseEntity<?> createUser(RequestEntity<User> reqUser) {
+	public ResponseEntity<?> create(RequestEntity<User> reqUser) {
 		User user = reqUser.getBody();
 		if(user.getUsername().isBlank() || user.getPassword().isBlank() || user.getBirthdate() == null)  return new ResponseEntity<ErrorRest>(new ErrorRest("Usuario mal formado"),HttpStatus.BAD_REQUEST);
 		
@@ -55,7 +55,7 @@ public class UserController {
 	}
 	
 	@PutMapping("/")
-	public ResponseEntity<?> updateUser(RequestEntity<User> reqUser) {
+	public ResponseEntity<?> update(RequestEntity<User> reqUser) {
 		User user = reqUser.getBody();
 		if(user.getUsername().isBlank() || user.getPassword().isBlank() || user.getBirthdate() == null)  return new ResponseEntity<ErrorRest>(new ErrorRest("Usuario mal formado"),HttpStatus.BAD_REQUEST);
 		
@@ -68,12 +68,12 @@ public class UserController {
 	
 	
 	@DeleteMapping("/{id}")
-	public ResponseEntity<?> deleteUser(@PathVariable Long id) {
+	public ResponseEntity<?> delete(@PathVariable Long id) {
 		if(userRepository.findById(id).isPresent()) {
 			userRepository.deleteById(id);
 			return new ResponseEntity<ErrorRest>(new ErrorRest("Usuario borrado correctamente"), HttpStatus.OK);
 		}
-		return new ResponseEntity<ErrorRest>(new ErrorRest("El usuario no existe"),
+		return new ResponseEntity<ErrorRest>(new ErrorRest("El usuario con el ID:"+id+" no existe"),
 				HttpStatus.NOT_FOUND); 
 	}
 	

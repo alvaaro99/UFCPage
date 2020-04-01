@@ -9,14 +9,27 @@ services:
     ports:
       - '3301:3306'
 
-  fighters:
-    container_name: fighters
+  fighters-details:
+    container_name: fighters-details
     restart: always
     build:
-      context: ./fighters
+      context: ./fighters-details
       dockerfile: mysql.dockerfile
     ports:
       - '3302:3306'
+
+  fighters-ranking:
+    container_name: fighters-ranking
+    restart: always
+    build:
+      context: ./fighters-ranking
+      dockerfile: mongo.dockerfile
+    ports:
+      - '3308:27017'
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: secret
+      MONGO_INITDB_DATABASE: ranking
 
   products:
     container_name: products
