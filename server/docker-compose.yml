@@ -1,0 +1,10 @@
+version: '2'
+services:
+  api-products:
+    container_name: api-products
+    restart: always
+    build:
+      context: ./RestProduct
+      dockerfile: Dockerfile
+    ports:
+      - '9998:9998'
