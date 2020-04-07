@@ -50,6 +50,9 @@ public class UserController {
 		if(userRepository.findById(user.getId()).isPresent() && user.getId() != 0) return new ResponseEntity<ErrorRest>(new ErrorRest("El usuario con ID " + user.getId() + " ya existe"),
 				HttpStatus.CONFLICT); 
 		
+		if(userRepository.findByUsername(user.getUsername()).size() > 0) return new ResponseEntity<ErrorRest>(new ErrorRest("El usuario con nombre " + user.getUsername() + " ya existe"),
+				HttpStatus.CONFLICT);
+		
 		return new ResponseEntity<User>(userRepository.save(user), HttpStatus.CREATED);
 		
 	}
