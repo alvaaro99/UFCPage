@@ -35,7 +35,7 @@ public class UserController {
 	}
 	
 	@GetMapping("/{id}") 
-	public ResponseEntity<?> getOne(@PathVariable Long id) {
+	public ResponseEntity<?> getOneById(@PathVariable Long id) {
 		Optional<User> result = userRepository.findById(id);
 		if(result.isEmpty()) return new ResponseEntity<ErrorRest>(new ErrorRest("No hay usuario con el ID "+id),HttpStatus.NOT_FOUND);
 			return new ResponseEntity<Optional<User>>(result,HttpStatus.OK);
