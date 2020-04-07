@@ -22,8 +22,8 @@ export class App {
   */
 
 	routes() {
-		this.app.use('/create', createToken);
-		this.app.use('/validate', validateToken);
+		this.app.post('/', createToken);
+		this.app.get('/', validateToken);
 	}
 
 	middlewares() {
