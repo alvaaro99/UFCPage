@@ -1,0 +1,12 @@
+{
+    "name": "alvaro/ranking",
+    "authors": [
+        {
+            "name": "Alvaro Acosta",
+            "email": "alvaro99acosta@gmail.com"
+        }
+    ],
+    "require": {
+        "mongodb/mongodb": "^1.6"
+    }
+}
