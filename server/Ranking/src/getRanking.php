@@ -1,8 +1,11 @@
 <?php declare(strict_types=1);
 
 require '../vendor/autoload.php';
+define('ENV', './.env');
 
-$mongo = new MongoDB\Client('mongodb://localhost:27017');
+$env = parse_ini_file(ENV);
+
+$mongo = new MongoDB\Client('mongodb://'.$env['MONGOURL'].':'.$env['MONGOPORT']);
 
 $collection = $mongo->selectCollection('fighters','ranking');
 
