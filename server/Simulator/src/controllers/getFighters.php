@@ -1,6 +1,6 @@
 <?php
 
-function getFighters(){
+function getFightersDetails(){
     $connect = new \mysqli('localhost','root','alvaro','FIGHTERS');
 
     $select = $connect->prepare('SELECT * FROM detalles');
@@ -13,5 +13,3 @@ function getFighters(){
     }
     return json_encode($result);
 }
-
-getFighters();
