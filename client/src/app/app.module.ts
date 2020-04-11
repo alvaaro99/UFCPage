@@ -3,12 +3,13 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { NavbarComponent } from './views/navbar/navbar.component';
+import { NavbarComponent } from './shared/components/navbar/navbar.component';
 import { RankingComponent } from './views/ranking/ranking.component';
 import { ShopComponent } from './views/shop/shop.component';
 import { SimulatorComponent } from './views/simulator/simulator.component';
 import { FormsModule } from '@angular/forms';
 import { WeightRankingPipe } from './shared/pipes/weight-ranking.pipe';
+import { FighterCardComponent } from './shared/components/fighter-card/fighter-card.component';
 
 @NgModule({
   declarations: [
@@ -17,10 +18,11 @@ import { WeightRankingPipe } from './shared/pipes/weight-ranking.pipe';
     RankingComponent,
     ShopComponent,
     SimulatorComponent,
-    WeightRankingPipe
+    WeightRankingPipe,
+    FighterCardComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule {}
