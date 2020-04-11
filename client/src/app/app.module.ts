@@ -10,6 +10,7 @@ import { SimulatorComponent } from './views/simulator/simulator.component';
 import { FormsModule } from '@angular/forms';
 import { WeightRankingPipe } from './shared/pipes/weight-ranking.pipe';
 import { FighterCardComponent } from './shared/components/fighter-card/fighter-card.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,7 @@ import { FighterCardComponent } from './shared/components/fighter-card/fighter-c
     WeightRankingPipe,
     FighterCardComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, FormsModule],
+  imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
   providers: [],
   bootstrap: [AppComponent],
 })
