@@ -13,7 +13,7 @@ export class ProductsService {
     );
 
   getById = (id: number) =>
-    this.httpClient.get(`http://localhost:9998/products/${id}`).pipe(
+    this.httpClient.get(`${process.env.PRODUCTS_URL}${id}`).pipe(
       map(response => response.data),
       catchError(error => throwError(error)),
     );
