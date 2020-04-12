@@ -25,7 +25,7 @@ public class ProductController {
 	@Autowired
 	ProductRepository productRepository;
 	
-	@GetMapping("/")
+	@GetMapping("")
 	public ResponseEntity<?> getAll() {
 		List<Product> result = productRepository.findAll();
 		if(!result.isEmpty()) return new ResponseEntity<List<Product>>(result, HttpStatus.OK);
@@ -40,7 +40,7 @@ public class ProductController {
 		
 	}
 	
-	@PostMapping("/")
+	@PostMapping("")
 	public ResponseEntity<?> create(RequestEntity<Product> reqProduct) {
 		Product product = reqProduct.getBody();
 		 
