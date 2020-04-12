@@ -17,6 +17,4 @@ export class ProductsService {
       map(response => response.data),
       catchError(error => throwError(error)),
     );
-
-  post = (url: string) => this.httpClient.post(url);
 }
