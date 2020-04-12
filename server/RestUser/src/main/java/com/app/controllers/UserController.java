@@ -27,14 +27,14 @@ public class UserController {
 	@Autowired
 	UserRepository userRepository;
 	
-	@GetMapping("/")
+	@GetMapping("")
 	public ResponseEntity<?> getAll() {
 		List<User> result = userRepository.findAll();
 		if(!result.isEmpty()) return new ResponseEntity<List<User>>(result, HttpStatus.OK);
 		return new ResponseEntity<ErrorRest>(new ErrorRest("No hay usuarios"),HttpStatus.NOT_FOUND);
 	}
 	
-	@GetMapping("/{id}") 
+	@GetMapping("/id/{id}") 
 	public ResponseEntity<?> getOneById(@PathVariable Long id) {
 		Optional<User> result = userRepository.findById(id);
 		if(result.isEmpty()) return new ResponseEntity<ErrorRest>(new ErrorRest("No hay usuario con el ID "+id),HttpStatus.NOT_FOUND);
@@ -42,7 +42,15 @@ public class UserController {
 		
 	}
 	
-	@PostMapping("/")
+	@GetMapping("/name/{username}") 
+	public ResponseEntity<?> getOneByUsername(@PathVariable String username) {
+		List<User> result = userRepository.findByUsername(username);
+		if(result.isEmpty()) return new ResponseEntity<ErrorRest>(new ErrorRest("No hay usuario con el nombre "+username),HttpStatus.NOT_FOUND);
+			return new ResponseEntity<List<User>>(result,HttpStatus.OK);
+		
+	}
+	
+	@PostMapping("")
 	public ResponseEntity<?> create(RequestEntity<User> reqUser) {
 		User user = reqUser.getBody();
 		if(user.getUsername().isBlank() || user.getPassword().isBlank() || user.getBirthdate() == null)  return new ResponseEntity<ErrorRest>(new ErrorRest("Usuario mal formado"),HttpStatus.BAD_REQUEST);
@@ -57,7 +65,7 @@ public class UserController {
 		
 	}
 	
-	@PutMapping("/")
+	@PutMapping("")
 	public ResponseEntity<?> update(RequestEntity<User> reqUser) {
 		User user = reqUser.getBody();
 		if(user.getUsername().isBlank() || user.getPassword().isBlank() || user.getBirthdate() == null)  return new ResponseEntity<ErrorRest>(new ErrorRest("Usuario mal formado"),HttpStatus.BAD_REQUEST);
