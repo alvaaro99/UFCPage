@@ -1,6 +1,7 @@
 import { Controller, Get, HttpStatus, Res, Param } from '@nestjs/common';
 import { Response } from 'express';
 import { ProductsService } from './products.service';
+import { IProduct } from './product.model';
 
 @Controller('products')
 export class ProductsController {
@@ -10,7 +11,7 @@ export class ProductsController {
     const products$ = this.productsService.getAll();
 
     products$.subscribe(
-      products => res.status(HttpStatus.OK).send(products),
+      (products: IProduct[]) => res.status(HttpStatus.OK).send(products),
       err => res.status(err.response.status).send(err.response.data),
     );
   }
@@ -20,7 +21,7 @@ export class ProductsController {
     const product$ = this.productsService.getById(id);
 
     product$.subscribe(
-      products => res.status(HttpStatus.OK).send(products),
+      (product: IProduct) => res.status(HttpStatus.OK).send(product),
       err => res.status(err.response.status).send(err.response.data),
     );
   }
