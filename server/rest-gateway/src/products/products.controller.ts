@@ -12,7 +12,7 @@ export class ProductsController {
 
     products$.subscribe(
       (products: IProduct[]) => res.status(HttpStatus.OK).send(products),
-      err => res.status(err.response.status).send(err.response.data),
+      err => res.status(err.status).send(err.data),
     );
   }
 
@@ -22,7 +22,7 @@ export class ProductsController {
 
     product$.subscribe(
       (product: IProduct) => res.status(HttpStatus.OK).send(product),
-      err => res.status(err.response.status).send(err.response.data),
+      err => res.status(err.status).send(err.data),
     );
   }
 }
