@@ -44,9 +44,9 @@ public class UserController {
 	
 	@GetMapping("/name/{username}") 
 	public ResponseEntity<?> getOneByUsername(@PathVariable String username) {
-		List<User> result = userRepository.findByUsername(username);
-		if(result.isEmpty()) return new ResponseEntity<ErrorRest>(new ErrorRest("No hay usuario con el nombre "+username),HttpStatus.NOT_FOUND);
-			return new ResponseEntity<List<User>>(result,HttpStatus.OK);
+		User result = userRepository.findByUsername(username);
+		if(result == null) return new ResponseEntity<ErrorRest>(new ErrorRest("No hay usuario con el nombre "+username),HttpStatus.NOT_FOUND);
+			return new ResponseEntity<User>(result,HttpStatus.OK);
 		
 	}
 	
@@ -58,7 +58,7 @@ public class UserController {
 		if(userRepository.findById(user.getId()).isPresent() && user.getId() != 0) return new ResponseEntity<ErrorRest>(new ErrorRest("El usuario con ID " + user.getId() + " ya existe"),
 				HttpStatus.CONFLICT); 
 		
-		if(userRepository.findByUsername(user.getUsername()).size() > 0) return new ResponseEntity<ErrorRest>(new ErrorRest("El usuario con nombre " + user.getUsername() + " ya existe"),
+		if(userRepository.findByUsername(user.getUsername()) != null) return new ResponseEntity<ErrorRest>(new ErrorRest("El usuario con nombre " + user.getUsername() + " ya existe"),
 				HttpStatus.CONFLICT);
 		
 		return new ResponseEntity<User>(userRepository.save(user), HttpStatus.CREATED);
