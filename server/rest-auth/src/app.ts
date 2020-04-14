@@ -1,5 +1,6 @@
 import Express, { Application } from 'express';
 import morgan from 'morgan';
+const cors = require('cors');
 import { createToken, validateToken } from './controllers/auth.controller';
 export class App {
 	private app: Application;
@@ -11,22 +12,17 @@ export class App {
 	}
 
 	async listen() {
-		await this.app.listen(9990);
-		console.log('Server on port 9990');
+		await this.app.listen(9999);
+		console.log('Server on port 9999');
 	}
 
-	/*
-  settings(){
-    this.app.set('port',this.port || process.env.PORT || 3000);
-  }
-  */
-
 	routes() {
-		this.app.post('/', createToken);
-		this.app.get('/', validateToken);
+		this.app.post('/create', createToken);
+		this.app.post('/validate', validateToken);
 	}
 
 	middlewares() {
+		this.app.use(cors());
 		this.app.use(morgan('dev'));
 		this.app.use(Express.json());
 	}
