@@ -2,6 +2,7 @@ import { Controller, Get, HttpStatus, Res, Param } from '@nestjs/common';
 import { Response } from 'express';
 import { ProductsService } from './products.service';
 import { IProduct } from './product.model';
+import { IAxiosError } from 'src/exceptions/axios.error';
 
 @Controller('products')
 export class ProductsController {
@@ -12,7 +13,7 @@ export class ProductsController {
 
     products$.subscribe(
       (products: IProduct[]) => res.status(HttpStatus.OK).send(products),
-      err => res.status(err.status).send(err.data),
+      (error: IAxiosError) => res.status(error.status).send(error.data),
     );
   }
 
@@ -22,7 +23,7 @@ export class ProductsController {
 
     product$.subscribe(
       (product: IProduct) => res.status(HttpStatus.OK).send(product),
-      err => res.status(err.status).send(err.data),
+      (error: IAxiosError) => res.status(error.status).send(error.data),
     );
   }
 }

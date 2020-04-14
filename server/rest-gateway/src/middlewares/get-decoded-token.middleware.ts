@@ -2,6 +2,7 @@ import { Injectable, NestMiddleware, HttpStatus } from '@nestjs/common';
 import { AuthService } from 'src/services/auth/auth.service';
 import { Request, Response } from 'express';
 import { map } from 'rxjs/operators';
+import { IAxiosError } from 'src/exceptions/axios.error';
 
 @Injectable()
 export class GetDecodedTokenMiddleware implements NestMiddleware {
@@ -14,7 +15,7 @@ export class GetDecodedTokenMiddleware implements NestMiddleware {
       .pipe(map(token => (req.headers.authorization = token)))
       .subscribe(
         () => next(),
-        error => res.status(error.status).send(error.data),
+        (error: IAxiosError) => res.status(error.status).send(error.data),
       );
   }
 }
