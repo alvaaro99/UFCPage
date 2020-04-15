@@ -8,6 +8,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import org.hibernate.annotations.ColumnTransformer;
+
 @Entity
 public class User {
 	
@@ -17,6 +19,10 @@ public class User {
 	@Column(unique = true)
 	private String username;
 	@Column
+	@ColumnTransformer(
+	        read =  "AES_DECRYPT(password, 'ufc-page')",
+	        write = "AES_ENCRYPT(?, 'ufc-page')"
+	                )
 	private String password;
 	@Column
 	private Date birthdate;

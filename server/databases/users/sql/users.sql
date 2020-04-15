@@ -3,7 +3,7 @@ create table user
     id        bigint       not null
         primary key,
     birthdate datetime(6)  null,
-    password  varchar(255) null,
+    password  blob null,
     username  varchar(255) null,
     constraint user_username_uindex
         unique (username)
