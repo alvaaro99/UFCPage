@@ -25,19 +25,30 @@ export class UsersController {
 
   @Get('/me')
   myInfo(@Req() req: Request, @Res() res: Response) {
-    console.log(req.headers.authorization);
-    this.usersService.getById(+req.headers.authorization).subscribe(
-      (user: IUser) => res.status(HttpStatus.OK).send(user),
-      (error: IAxiosError) => res.status(error.status).send(error.data),
-    );
+    this.usersService
+      .getById(+req.headers.authorization['id'])
+      .pipe(
+        map((user: IUser) => {
+          user.password = this.cryptoService.decrypt(user.password);
+          return user;
+        }),
+      )
+      .subscribe(
+        (user: IUser) => res.status(HttpStatus.OK).send(user),
+        (error: IAxiosError) => res.status(error.status).send(error.data),
+      );
   }
 
-  /*@Post('/login')
+  @Post('/login')
   login(@Body() user: IUserDto, @Res() res: Response) {
-    this.usersService.getByUsername(user.username).pipe(
-      map()
-    );
-  }*/
+    this.usersService
+      .getByUsername(user.username)
+      .pipe(switchMap((user: IUser) => this.authService.createToken(user)))
+      .subscribe(
+        (token: string) => res.status(HttpStatus.OK).send(token),
+        (error: IAxiosError) => res.status(error.status).send(error.data),
+      );
+  }
 
   @Post('/register')
   register(@Body() user: IUserDto, @Res() res: Response) {
