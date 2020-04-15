@@ -8,11 +8,12 @@ import { UsersController } from './users.controller';
 import { UsersService } from './users.service';
 import { AuthService } from 'src/services/auth/auth.service';
 import { GetDecodedTokenMiddleware } from 'src/middlewares/get-decoded-token.middleware';
+import { CryptoService } from 'src/services/crypto/crypto.service';
 
 @Module({
   imports: [HttpModule],
   controllers: [UsersController],
-  providers: [UsersService, AuthService],
+  providers: [UsersService, AuthService, CryptoService],
 })
 export class UsersModule implements NestModule {
   configure(consumer: MiddlewareConsumer) {
