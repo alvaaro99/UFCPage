@@ -4,9 +4,9 @@ const jwt = require('jsonwebtoken');
 
 export function createToken(req: Request, res: Response) {
 	const id = req.body['id'];
-	const encryptedToken = jwt.sign(id, 'ufc-page');
+	const encryptedToken = jwt.sign({ id }, 'ufc-page', { expiresIn: '6h' });
 
-	res.status(httpStatus.OK).send({ token: `Bearer ${encryptedToken}` });
+	res.status(httpStatus.OK).send(`Bearer ${encryptedToken}`);
 }
 
 export async function validateToken(req: Request, res: Response) {
@@ -14,7 +14,7 @@ export async function validateToken(req: Request, res: Response) {
 	try {
 		const decodedToken = jwt.verify(token, 'ufc-page');
 		return res.status(httpStatus.OK).send(decodedToken);
-	} catch {
-		return res.status(httpStatus.FORBIDDEN).send('Token invalido');
+	} catch (error) {
+		return res.status(httpStatus.FORBIDDEN).send(error.message);
 	}
 }
