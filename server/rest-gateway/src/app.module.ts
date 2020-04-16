@@ -6,6 +6,7 @@ import { ConfigModule } from '@nestjs/config';
 import { UsersModule } from './users/users.module';
 import { AuthService } from './services/auth/auth.service';
 import { CryptoService } from './services/crypto/crypto.service';
+import { FightersModule } from './fighters/fighters.module';
 
 @Module({
   imports: [
@@ -16,6 +17,7 @@ import { CryptoService } from './services/crypto/crypto.service';
       isGlobal: true,
     }),
     UsersModule,
+    FightersModule,
   ],
   controllers: [AppController],
   providers: [AppService, AuthService, CryptoService],
