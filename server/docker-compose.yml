@@ -1,0 +1,48 @@
+version: '2'
+services:
+  app-ranking:
+    container_name: app-ranking
+    restart: always
+    build:
+      context: ./Ranking
+      dockerfile: Dockerfile
+    ports:
+      - '9996:80'
+
+  db-users:
+    container_name: db-users
+    restart: always
+    build:
+      context: ./databases/users
+      dockerfile: mysql.dockerfile
+    ports:
+      - '3301:3306'
+
+  db-fighters-details:
+    container_name: db-fighters-details
+    restart: always
+    build:
+      context: ./databases/fighters-details
+      dockerfile: mysql.dockerfile
+    ports:
+      - '3302:3306'
+
+  db-fighters-ranking:
+    container_name: db-fighters-ranking
+    restart: always
+    build:
+      context: ./databases/fighters-ranking
+      dockerfile: mongo.dockerfile
+    ports:
+      - '3308:27017'
+    environment:
+      MONGO_INITDB_DATABASE: ranking
+
+  db-products:
+    container_name: db-products
+    restart: always
+    build:
+      context: ./databases/products
+      dockerfile: mysql.dockerfile
+    ports:
+      - '3303:3306'
