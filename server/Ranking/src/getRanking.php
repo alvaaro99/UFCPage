@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-require '../vendor/autoload.php';
+require '/var/www/html/vendor/autoload.php';
 define('ENV', './.env');
 
 $env = parse_ini_file(ENV);
