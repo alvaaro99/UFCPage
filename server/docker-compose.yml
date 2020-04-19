@@ -1,5 +1,23 @@
 version: '2'
 services:
+  app-users:
+    container_name: app-users
+    restart: always
+    build:
+      context: ./RestUser
+      dockerfile: Dockerfile
+    ports:
+      - '9997:9997'
+
+  app-products:
+    container_name: app-products
+    restart: always
+    build:
+      context: ./RestProduct
+      dockerfile: Dockerfile
+    ports:
+      - '9998:9998'
+
   app-ranking:
     container_name: app-ranking
     restart: always
