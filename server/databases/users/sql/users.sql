@@ -9,4 +9,5 @@ create table user
         unique (username)
 );
 
-INSERT INTO USERS.user (id, birthdate, password, username) VALUES (0, '1999-08-21 02:00:00', 'admin', 'admin');
+INSERT INTO USERS.user (id, birthdate, password, username) VALUES (1, '1999-08-21 00:00:00', 0xDC80813C87DB4C67FCEC08880D35701A, 'admin');
+
