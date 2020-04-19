@@ -9,4 +9,4 @@ require 'simulator-controller.php';
 
 
 if($_SERVER['REQUEST_METHOD'] == 'GET') echo getFighters();
-if($_SERVER['REQUEST_METHOD'] == 'POST') var_dump(simulateFight());
+if($_SERVER['REQUEST_METHOD'] == 'POST') echo json_encode(simulateFight());
