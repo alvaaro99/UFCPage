@@ -8,5 +8,10 @@
   ],
   "require": {
     "mongodb/mongodb": "^1.6"
+  },
+  "autoload": {
+    "classmap": [
+      ""
+    ]
   }
 }
