@@ -45,15 +45,6 @@ services:
     ports:
       - '3301:3306'
 
-  db-fighters-details:
-    container_name: db-fighters-details
-    restart: always
-    build:
-      context: ./databases/fighters-details
-      dockerfile: mysql.dockerfile
-    ports:
-      - '3302:3306'
-
   db-fighters-ranking:
     container_name: db-fighters-ranking
     restart: always
