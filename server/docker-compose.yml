@@ -9,6 +9,15 @@ services:
     ports:
       - '9996:80'
 
+  app-simulator:
+    container_name: app-simulator
+    restart: always
+    build:
+      context: ./Simulator
+      dockerfile: Dockerfile
+    ports:
+      - '9995:80'
+
   db-users:
     container_name: db-users
     restart: always
