@@ -1,15 +1,25 @@
 <?php
 
-function getFightersDetails(){
-    $connect = new \mysqli('localhost','root','alvaro','FIGHTERS');
 
-    $select = $connect->prepare('SELECT * FROM detalles');
-    $select->bind_result($name,$height,$wheight,$reach,$stance,$birthdate);
-    $select->store_result();
-    $select->execute();
-    $result = [];
-    while ($select->fetch()){
-        $result[] = ["name"=>$name,"height"=>$height,"weight"=>$wheight,"reach"=>$reach,"stance"=>$stance,"birthdate"=>$birthdate];
-    }
-    return json_encode($result);
+require '../../vendor/autoload.php';
+define('ENV', '../.env');
+
+function getFighters(){
+
+$env = parse_ini_file(ENV);
+
+$mongo = new MongoDB\Client('mongodb://'.$env['MONGOURL'].':'.$env['MONGOPORT']);
+
+$collection = $mongo->selectCollection('ranking','ranking');
+
+$result = $collection->find();
+
+$ranking = [];
+
+foreach ($result as $row){
+    $ranking[] = ["name"=>$row['fighter'],"weightclass"=>$row['weightclass'],"date"=>$row["date"],"rank"=>$row['rank']];
+}
+
+$ranking = json_encode($ranking);
+return $ranking;
 }
