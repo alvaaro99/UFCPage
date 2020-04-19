@@ -12,3 +12,5 @@ RUN mv ./src/ ./app/
 RUN composer dump-autoload
 
 RUN echo "extension=mongodb.so" >> /usr/local/etc/php/conf.d/docker-php-ext-sodium.ini
+
+RUN echo "Alias /simulator \"/var/www/html/app/controllers\"" >> /etc/apache2/mods-enabled/alias.conf
