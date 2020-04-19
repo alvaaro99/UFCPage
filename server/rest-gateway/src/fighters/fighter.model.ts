@@ -5,4 +5,5 @@ export interface IFighter {
   birthdate: Date;
   date: Date;
   weightclass: string;
+  wonRounds?: number;
 }
