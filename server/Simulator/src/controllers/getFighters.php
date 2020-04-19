@@ -17,7 +17,7 @@ $result = $collection->find();
 $ranking = [];
 
 foreach ($result as $row){
-    $ranking[] = ["name"=>$row['fighter'],"weightclass"=>$row['weightclass'],"date"=>$row["date"],"rank"=>$row['rank']];
+    $ranking[] = ["name"=>$row['fighter'],"weightclass"=>$row['weightclass'],"date"=>$row["date"],"rank"=>$row['rank'],"height"=>$row['height'],"birthdate"=>$row['birthdate']];
 }
 
 $ranking = json_encode($ranking);
