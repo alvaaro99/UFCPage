@@ -15,11 +15,11 @@ export class RankingService {
 
   getAll() {
     this.httpService
-      .get(environment.GATEWAY_URL + 'ranking')
+      .get(environment.GATEWAY_URL + environment.ENDPOINT_RANKING)
       .pipe(map((fighters: IFighter[]) => (this.ranking = fighters)))
       .subscribe(
         () => console.log('bin'),
-        (eror) => console.log(eror)
+        (error) => console.log(error)
       );
   }
 }
