@@ -1,6 +1,4 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { IFighterDetails } from '../../models/fighterDetails.model';
-
 @Component({
   selector: 'app-fighter-card',
   templateUrl: './fighter-card.component.html',
@@ -8,7 +6,7 @@ import { IFighterDetails } from '../../models/fighterDetails.model';
 })
 export class FighterCardComponent implements OnInit {
   @Input() color: string;
-  @Input() fighter: IFighterDetails;
+  @Input() fighter: any;
 
   constructor() {}
 
