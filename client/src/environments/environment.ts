@@ -6,6 +6,8 @@ export const environment = {
   production: false,
 
   GATEWAY_URL: 'http://localhost:9990/',
+  ENDPOINT_PRODUCTS: 'products/',
+  ENDPOINT_RANKING: 'ranking/',
 };
 
 /*
