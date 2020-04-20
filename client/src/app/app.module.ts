@@ -8,7 +8,7 @@ import { RankingComponent } from './views/ranking/ranking.component';
 import { ShopComponent } from './views/shop/shop.component';
 import { SimulatorComponent } from './views/simulator/simulator.component';
 import { FormsModule } from '@angular/forms';
-import { WeightRankingPipe } from './shared/pipes/weight-ranking.pipe';
+import { WeightRankingPipe } from './shared/pipes/weight-ranking/weight-ranking.pipe';
 import { FighterCardComponent } from './shared/components/fighter-card/fighter-card.component';
 import { HttpClientModule } from '@angular/common/http';
 

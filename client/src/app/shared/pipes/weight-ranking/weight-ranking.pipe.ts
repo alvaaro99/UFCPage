@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { IFighter } from '../models/fighter.model';
+import { IFighter } from '../../models/fighter.model';
 
 @Pipe({
   name: 'weight',
