@@ -27,7 +27,7 @@
     <th>Fecha</th>
   </thead>
   <tbody>
-    <tr *ngFor="let fighter of ranking | weight: weightToShow">
+    <tr *ngFor="let fighter of rankingService.ranking | weight: weightToShow">
       <td>{{ fighter.rank }}</td>
       <td>{{ fighter.name }}</td>
       <td>{{ fighter.weightclass | titlecase }}</td>
