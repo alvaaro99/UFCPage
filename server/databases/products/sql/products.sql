@@ -6,7 +6,7 @@ create table product
     image       longtext null,
     name        varchar(255) null,
     price       float        null
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO PRODUCTS.product (id, description, image, name, price) VALUES (1, 'Coquilla de color negro, tamaño único', 'ufc-images/coquilla-black.jpg', 'Coquilla', 15);
 INSERT INTO PRODUCTS.product (id, description, image, name, price) VALUES (2, 'Guantillas de ufc rojo y negro', 'ufc-images/gloves-ufc-black-red.webp', 'Guantillas R/N', 28);
