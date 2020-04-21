@@ -9,17 +9,10 @@ import { environment } from 'src/environments/environment';
 })
 export class RankingService {
   ranking: IFighter[] = [];
-  constructor(private httpService: HttpService) {
-    this.getAll();
-  }
+  constructor(private httpService: HttpService) {}
 
-  getAll() {
+  getAll = () =>
     this.httpService
       .get(environment.GATEWAY_URL + environment.ENDPOINT_RANKING)
-      .pipe(map((fighters: IFighter[]) => (this.ranking = fighters)))
-      .subscribe(
-        () => console.log('bin'),
-        (error) => console.log(error)
-      );
-  }
+      .pipe(map((fighters: IFighter[]) => (this.ranking = fighters)));
 }

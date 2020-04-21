@@ -14,4 +14,10 @@ export class RankingComponent implements OnInit {
   ngOnInit(): void {
     this.weightToShow = 'all';
   }
+
+  getAll() {
+    this.rankingService
+      .getAll()
+      .subscribe({ error: (error) => console.log(error) });
+  }
 }
