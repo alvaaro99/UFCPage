@@ -2,6 +2,8 @@
   <thead>
     <th>Puesto</th>
     <th>Luchador</th>
+    <th>Altura</th>
+    <th>Edad</th>
     <th>
       <select [(ngModel)]="weightToShow">
         <option value="all">Peso - Todos</option>
@@ -30,6 +32,8 @@
     <tr *ngFor="let fighter of rankingService.ranking | weight: weightToShow">
       <td>{{ fighter.rank }}</td>
       <td>{{ fighter.name }}</td>
+      <td>{{ fighter.height }}</td>
+      <td>{{ fighter.birthdate | dateToAge }}</td>
       <td>{{ fighter.weightclass | titlecase }}</td>
       <td>{{ fighter.date | date: "dd-MM-yyyy" }}</td>
     </tr>
