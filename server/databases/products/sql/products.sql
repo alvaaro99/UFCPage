@@ -17,7 +17,7 @@ INSERT INTO PRODUCTS.product (id, description, image, name, price) VALUES (6, 'M
 INSERT INTO PRODUCTS.product (id, description, image, name, price) VALUES (7, 'Proteccion de antebrazos para entrenamiento, marca Buddha', 'ufc-images/paos-buddha.jpg', 'Paos Buddha', 39.99);
 INSERT INTO PRODUCTS.product (id, description, image, name, price) VALUES (8, 'Pantalones cortos de UFC', 'ufc-images/shorts-ufc.jpeg', 'Pantalones UFC', 21.49);
 INSERT INTO PRODUCTS.product (id, description, image, name, price) VALUES (9, 'Proteccion ligera para piernas', 'ufc-images/slim-leg-guard-black.jpg', 'Tibiales Tela Negro', 39.99);
-INSERT INTO PRODUCTS.product (id, description, image, name, price) VALUES (10, 'Camiseta de marca UFC, color gris', 'ufc-images/tshirt-gray-udc.jpeg', 'Camiseta UFC', 15.99);
-INSERT INTO PRODUCTS.product (id, description, image, name, price) VALUES (11, 'Guantillas marca UFC, color azul y negro', 'ufc-images/ufc-gloves-blue-black.joeg', 'Guantilla A/N', 28);
+INSERT INTO PRODUCTS.product (id, description, image, name, price) VALUES (10, 'Camiseta de marca UFC, color gris', 'ufc-images/tshirt-gray-ufc.jpeg', 'Camiseta UFC', 15.99);
+INSERT INTO PRODUCTS.product (id, description, image, name, price) VALUES (11, 'Guantillas marca UFC, color azul y negro', 'ufc-images/ufc-gloves-blue-black.jpeg', 'Guantilla A/N', 28);
 INSERT INTO PRODUCTS.product (id, description, image, name, price) VALUES (12, 'Saco pesado de entrenamiento UFC, color rojo y blanco', 'ufc-images/saco-ufc-rojo-blanco.jpeg', 'Saco UFC', 84.99);
 
