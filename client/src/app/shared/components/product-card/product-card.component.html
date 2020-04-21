@@ -1,0 +1,16 @@
+<div class="card d-inline-block m-2" style="width: 15rem;">
+  <img
+    class="card-img-top"
+    [src]="imageServerUrl + product.image"
+    alt="Card image cap"
+  />
+  <div class="card-body text-center">
+    <h5 class="card-title">{{ product.name }}</h5>
+    <p class="card-text">
+      {{ product.description }}
+    </p>
+    <button (click)="addToCart()" class="btn btn-primary">
+      {{ product.price }} €
+    </button>
+  </div>
+</div>
