@@ -8,6 +8,7 @@ export const environment = {
   GATEWAY_URL: 'http://localhost:9990/',
   ENDPOINT_PRODUCTS: 'products/',
   ENDPOINT_RANKING: 'ranking/',
+  PRODUCT_URL: 'http://localhost:9998/',
 };
 
 /*
