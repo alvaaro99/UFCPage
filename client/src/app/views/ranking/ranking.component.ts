@@ -13,6 +13,7 @@ export class RankingComponent implements OnInit {
 
   ngOnInit(): void {
     this.weightToShow = 'all';
+    this.getAll();
   }
 
   getAll() {
