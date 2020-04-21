@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductsService } from 'src/app/shared/services/products/products.service';
+import { CartService } from 'src/app/shared/services/cart/cart.service';
 
 @Component({
   selector: 'app-shop',
@@ -7,12 +8,14 @@ import { ProductsService } from 'src/app/shared/services/products/products.servi
   styleUrls: ['./shop.component.css'],
 })
 export class ShopComponent implements OnInit {
-  constructor(public productsService: ProductsService) {}
+  constructor(
+    public productsService: ProductsService,
+    public cartService: CartService
+  ) {}
 
   ngOnInit(): void {
-    this.productsService.getAll().subscribe(
-      () => console.log('bin'),
-      (error) => console.log(error)
-    );
+    this.productsService
+      .getAll()
+      .subscribe({ error: (error) => console.log(error) });
   }
 }

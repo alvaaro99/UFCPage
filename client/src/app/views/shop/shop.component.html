@@ -1,3 +1,11 @@
-<div *ngFor="let product of productsService.products">
-  {{ product.name }}
+<div class="grid-container">
+  <div class="products m-5">
+    <app-product-card
+      class="card-product"
+      *ngFor="let product of productsService.products"
+      [product]="product"
+      [clickFunction]="cartService.addToCart"
+    ></app-product-card>
+  </div>
+  <div class="cart"></div>
 </div>

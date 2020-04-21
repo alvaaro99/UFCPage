@@ -1,0 +1,20 @@
+.grid-container {
+  display: grid;
+  grid-template-columns: 70% 25%;
+  grid-template-rows: 100%;
+  gap: 1px 10px;
+  grid-template-areas: "products cart";
+}
+
+.products {
+  grid-area: products;
+}
+
+.card-product {
+  flex: 0 0 auto;
+  margin: 10px;
+}
+
+.cart {
+  grid-area: cart;
+}

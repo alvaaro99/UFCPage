@@ -12,6 +12,7 @@ import { WeightRankingPipe } from './shared/pipes/weight-ranking/weight-ranking.
 import { FighterCardComponent } from './shared/components/fighter-card/fighter-card.component';
 import { HttpClientModule } from '@angular/common/http';
 import { DateToAgePipe } from './shared/pipes/date-to-age/date-to-age.pipe';
+import { ProductCardComponent } from './shared/components/product-card/product-card.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { DateToAgePipe } from './shared/pipes/date-to-age/date-to-age.pipe';
     WeightRankingPipe,
     FighterCardComponent,
     DateToAgePipe,
+    ProductCardComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
   providers: [],
