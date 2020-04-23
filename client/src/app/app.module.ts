@@ -13,6 +13,7 @@ import { FighterCardComponent } from './shared/components/fighter-card/fighter-c
 import { HttpClientModule } from '@angular/common/http';
 import { DateToAgePipe } from './shared/pipes/date-to-age/date-to-age.pipe';
 import { ProductCardComponent } from './shared/components/product-card/product-card.component';
+import { CartComponent } from './shared/components/cart/cart.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { ProductCardComponent } from './shared/components/product-card/product-c
     FighterCardComponent,
     DateToAgePipe,
     ProductCardComponent,
+    CartComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
   providers: [],
