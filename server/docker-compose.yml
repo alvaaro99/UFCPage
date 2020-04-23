@@ -64,3 +64,5 @@ services:
       dockerfile: mysql.dockerfile
     ports:
       - '3303:3306'
+    volumes:
+      - ./databases/products/custom.cnf:/etc/mysql/conf.d/custom.cnf
