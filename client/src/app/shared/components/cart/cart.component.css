@@ -6,3 +6,7 @@ img {
 h2 {
   display: inline;
 }
+
+fa-icon:hover {
+  cursor: pointer;
+}
