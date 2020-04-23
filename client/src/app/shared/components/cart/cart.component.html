@@ -1,1 +1,30 @@
-<p>cart works!</p>
+<ul class="list-group">
+  <li class="list-group-item text-center">
+    <fa-icon class="fa-2x" [icon]="iconCart"></fa-icon>
+  </li>
+  <li *ngFor="let item of cartService.cart" class="list-group-item">
+    <fa-icon
+      [icon]="iconRemove"
+      class="text-left mr-1 fa-lg"
+      (click)="cartService.removeProduct(item)"
+    ></fa-icon>
+
+    <img [src]="imageServerURL + item.image" alt="" /> {{ item.quantity }} X
+    {{ item.name }} - {{ item.price * item.quantity | number: ".2" }}€
+
+    <fa-icon
+      [icon]="iconMinus"
+      class="text-right mr-1 fa-lg"
+      (click)="cartService.removeQuantity(item)"
+    ></fa-icon>
+
+    <fa-icon
+      [icon]="IconPlus"
+      class="text-right mr-1 fa-lg"
+      (click)="cartService.addToCart(item)"
+    ></fa-icon>
+  </li>
+  <li class="text-right list-group-item" *ngIf="cartService.cart.length > 0">
+    <b>Total: </b> {{ cartService.calculateTotal() | number: ".2" }} €
+  </li>
+</ul>
