@@ -18,3 +18,11 @@
 .cart {
   grid-area: cart;
 }
+
+app-cart {
+  position: fixed;
+  overflow: overlay;
+  top: 15%;
+  bottom: 10%;
+  right: 2%;
+}
