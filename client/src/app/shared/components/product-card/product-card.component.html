@@ -10,7 +10,7 @@
       {{ product.description }}
     </p>
     <button (click)="addToCart()" class="btn btn-primary">
-      {{ product.price }} €
+      {{ product.price | number: ".2" }} €
     </button>
   </div>
 </div>
