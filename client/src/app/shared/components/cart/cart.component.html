@@ -24,7 +24,7 @@
       (click)="cartService.addToCart(item)"
     ></fa-icon>
   </li>
-  <li class="text-right list-group-item" *ngIf="cartService.cart.length > 0">
+  <li class="text-right list-group-item">
     <b>Total: </b> {{ cartService.calculateTotal() | number: ".2" }} €
   </li>
 </ul>

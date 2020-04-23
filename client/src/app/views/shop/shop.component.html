@@ -1,5 +1,5 @@
 <div class="grid-container">
-  <div class="products m-5">
+  <div class="products mt-5 mr-3 ml-2">
     <app-product-card
       class="card-product"
       *ngFor="let product of productsService.products"
@@ -7,5 +7,7 @@
       [clickFunction]="cartService.addToCart"
     ></app-product-card>
   </div>
-  <div class="cart"></div>
+  <div class="cart mt-5 mr-3">
+    <app-cart *ngIf="cartService.cart.length > 0"></app-cart>
+  </div>
 </div>
