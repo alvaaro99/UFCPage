@@ -19,12 +19,24 @@ export class CartService {
 
   isProductInCart = (product: IProduct) => this.cart.includes(product);
 
-  addQuantity(product: IProduct) {
-    product.quantity++;
-  }
+  getIndex = (product: IProduct) => this.cart.indexOf(product);
 
-  firstQuantity(product: IProduct) {
+  addQuantity = (product: IProduct) => {
+    product.quantity++;
+  };
+
+  firstQuantity = (product: IProduct) => {
     product.quantity = 1;
     this.cart.push(product);
-  }
+  };
+
+  removeQuantity = (product: IProduct) => {
+    const index = this.getIndex(product);
+    this.cart[index].quantity--;
+  };
+
+  removeProduct = (product: IProduct) => {
+    const index = this.getIndex(product);
+    this.cart.splice(index, 1);
+  };
 }
