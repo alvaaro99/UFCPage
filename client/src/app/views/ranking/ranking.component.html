@@ -7,29 +7,34 @@
     <th>
       <select [(ngModel)]="weightToShow">
         <option value="all">Peso - Todos</option>
-        <option value="libra por libra">Peso - Libra por Libra</option>
-        <optgroup label="Femenino">
-          <option value="paja fem">Peso - Paja</option>
-          <option value="mosca fem">Peso - Mosca</option>
-          <option value="gallo fem">Peso - Gallo</option>
-          <option value="pluma fem">Peso - Pluma</option>
-        </optgroup>
-        <optgroup label="Masculino">
-          <option value="mosca">Peso - Mosca</option>
-          <option value="gallo">Peso - Gallo</option>
-          <option value="pluma">Peso - Pluma</option>
-          <option value="ligero">Peso - Ligero</option>
-          <option value="medio">Peso - Medio</option>
-          <option value="welter">Peso - Welter</option>
-          <option value="semipesado">Peso - Semipesado</option>
-          <option value="pesado">Peso - Pesado</option>
-        </optgroup>
+        <option
+          *ngFor="
+            let weightclass of rankingService.ranking | noRepeat: 'weightclass'
+          "
+          [value]="weightclass"
+          >Peso - {{ weightclass | titlecase }}</option
+        >
       </select>
     </th>
-    <th>Fecha</th>
+    <th>
+      <select [(ngModel)]="dateToShow">
+        <option value="all">Fecha - Todas</option>
+        <option
+          *ngFor="let date of rankingService.ranking | noRepeat: 'date'"
+          [value]="date"
+          >Fecha - {{ date | date: "dd-MM-yyyy" }}</option
+        >
+      </select>
+    </th>
   </thead>
   <tbody>
-    <tr *ngFor="let fighter of rankingService.ranking | weight: weightToShow">
+    <tr
+      *ngFor="
+        let fighter of rankingService.ranking
+          | weight: weightToShow
+          | dateRanking: dateToShow
+      "
+    >
       <td>{{ fighter.rank }}</td>
       <td>{{ fighter.name }}</td>
       <td>{{ fighter.height }}</td>

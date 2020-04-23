@@ -15,6 +15,8 @@ import { DateToAgePipe } from './shared/pipes/date-to-age/date-to-age.pipe';
 import { ProductCardComponent } from './shared/components/product-card/product-card.component';
 import { CartComponent } from './shared/components/cart/cart.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { DateRankingPipe } from './shared/pipes/date-ranking/date-ranking.pipe';
+import { NoRepeatPipe } from './shared/pipes/no-repeat/no-repeat.pipe';
 
 @NgModule({
   declarations: [
@@ -28,6 +30,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     DateToAgePipe,
     ProductCardComponent,
     CartComponent,
+    DateRankingPipe,
+    NoRepeatPipe,
   ],
   imports: [
     BrowserModule,
