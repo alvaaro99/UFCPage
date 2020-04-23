@@ -14,6 +14,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { DateToAgePipe } from './shared/pipes/date-to-age/date-to-age.pipe';
 import { ProductCardComponent } from './shared/components/product-card/product-card.component';
 import { CartComponent } from './shared/components/cart/cart.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,13 @@ import { CartComponent } from './shared/components/cart/cart.component';
     ProductCardComponent,
     CartComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    FormsModule,
+    HttpClientModule,
+    FontAwesomeModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })
