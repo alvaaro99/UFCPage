@@ -9,14 +9,13 @@ import { HttpClient } from '@angular/common/http';
 export class UsersService {
   constructor(private http: HttpClient) {}
 
-  login(user: IUser) {
+  login = (user: IUser) =>
     this.http.post(
       environment.GATEWAY_URL +
         environment.ENDPOINT_USERS +
         environment.ENPOINT_LOGIN,
       user
     );
-  }
 
   register() {}
 
