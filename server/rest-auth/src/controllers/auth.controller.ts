@@ -6,7 +6,7 @@ export function createToken(req: Request, res: Response) {
 	const id = req.body['id'];
 	const encryptedToken = jwt.sign({ id }, 'ufc-page', { expiresIn: '6h' });
 
-	res.status(httpStatus.OK).send(`Bearer ${encryptedToken}`);
+	res.status(httpStatus.OK).send({ token: `Bearer ${encryptedToken}` });
 }
 
 export async function validateToken(req: Request, res: Response) {
