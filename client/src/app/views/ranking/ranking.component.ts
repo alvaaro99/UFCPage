@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RankingService } from 'src/app/shared/services/ranking/ranking.service';
+import { CustomException } from 'src/app/shared/exceptions/custom.exception';
 
 @Component({
   selector: 'app-ranking',
@@ -20,6 +21,6 @@ export class RankingComponent implements OnInit {
   getAll() {
     this.rankingService
       .getAll()
-      .subscribe({ error: (error) => console.log(error) });
+      .subscribe({ error: (error) => new CustomException(error.error) });
   }
 }

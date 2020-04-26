@@ -1,7 +1,7 @@
 import Swal from 'sweetalert2';
 
 export class CustomException extends Error {
-  constructor({ message }: { message: string }) {
+  constructor(message: string) {
     super(message);
     this.showError();
   }
