@@ -1,0 +1,23 @@
+<form [formGroup]="userData">
+  <div class="form-group">
+    <label for="username">Usuario</label>
+    <input type="text" class="form-control" formControlName="username" />
+  </div>
+  <div class="form-group">
+    <label for="password">Password</label>
+    <input
+      type="password"
+      class="form-control"
+      id="password"
+      formControlName="password"
+    />
+  </div>
+  <button
+    (click)="login()"
+    [disabled]="userData.invalid"
+    type="button"
+    class="btn btn-primary"
+  >
+    Entrar
+  </button>
+</form>
