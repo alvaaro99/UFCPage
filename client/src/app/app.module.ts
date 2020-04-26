@@ -18,6 +18,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { DateRankingPipe } from './shared/pipes/date-ranking/date-ranking.pipe';
 import { NoRepeatPipe } from './shared/pipes/no-repeat/no-repeat.pipe';
 import { LoginComponent } from './views/login/login.component';
+import { LoginFormComponent } from './shared/components/login-form/login-form.component';
+import { RegisterFormComponent } from './shared/components/register-form/register-form.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +36,8 @@ import { LoginComponent } from './views/login/login.component';
     DateRankingPipe,
     NoRepeatPipe,
     LoginComponent,
+    LoginFormComponent,
+    RegisterFormComponent,
   ],
   imports: [
     BrowserModule,
