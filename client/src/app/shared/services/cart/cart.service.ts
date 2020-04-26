@@ -31,6 +31,7 @@ export class CartService {
   removeQuantity = (product: IProduct) => {
     const index = this.getIndex(product);
     this.cart[index].quantity--;
+    if (product.quantity === 0) this.removeProduct(product);
   };
 
   removeProduct = (product: IProduct) => {
