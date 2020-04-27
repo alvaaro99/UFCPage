@@ -12,7 +12,12 @@ export class UsersService {
       map(response => response.data),
       catchError(error =>
         !error.response
-          ? throwError({ status: 404, data: 'url no encontrada' })
+          ? throwError(
+              throwError({
+                status: 404,
+                data: { message: 'url no encontrada' },
+              }),
+            )
           : throwError(error.response),
       ),
     );
@@ -22,7 +27,10 @@ export class UsersService {
       map(response => response.data),
       catchError(error =>
         !error.response
-          ? throwError({ status: 404, data: 'url no encontrada' })
+          ? throwError({
+              status: 404,
+              data: { message: 'url no encontrada' },
+            })
           : throwError(error.response),
       ),
     );
@@ -32,7 +40,12 @@ export class UsersService {
       map(response => response.data),
       catchError(error =>
         !error.response
-          ? throwError({ status: 404, data: 'url no encontrada' })
+          ? throwError(
+              throwError({
+                status: 404,
+                data: { message: 'url no encontrada' },
+              }),
+            )
           : throwError(error.response),
       ),
     );
