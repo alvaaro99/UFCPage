@@ -2,6 +2,7 @@ import { Injectable, HttpService } from '@nestjs/common';
 import { map, catchError } from 'rxjs/operators';
 import { throwError } from 'rxjs';
 import { IUser } from 'src/users/user.model';
+import { NotFoundError } from 'src/exceptions/notFound.error';
 
 @Injectable()
 export class AuthService {
@@ -12,12 +13,7 @@ export class AuthService {
       map(response => response.data),
       catchError(error =>
         !error.response
-          ? throwError(
-              throwError({
-                status: 404,
-                data: { message: 'url no encontrada' },
-              }),
-            )
+          ? throwError(new NotFoundError())
           : throwError(error.response),
       ),
     );
@@ -27,12 +23,7 @@ export class AuthService {
       map(response => response.data),
       catchError(error =>
         !error.response
-          ? throwError(
-              throwError({
-                status: 404,
-                data: { message: 'url no encontrada' },
-              }),
-            )
+          ? throwError(new NotFoundError())
           : throwError(error.response),
       ),
     );

@@ -1,6 +1,7 @@
 import { Injectable, HttpService } from '@nestjs/common';
 import { map, catchError } from 'rxjs/operators';
 import { throwError } from 'rxjs';
+import { NotFoundError } from 'src/exceptions/notFound.error';
 
 @Injectable()
 export class RankingService {
@@ -11,12 +12,7 @@ export class RankingService {
       map(response => response.data),
       catchError(error =>
         !error.response
-          ? throwError(
-              throwError({
-                status: 404,
-                data: { message: 'url no encontrada' },
-              }),
-            )
+          ? throwError(new NotFoundError())
           : throwError(error.response),
       ),
     );

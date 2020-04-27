@@ -16,7 +16,7 @@ export class ShopComponent implements OnInit {
 
   ngOnInit(): void {
     this.productsService.getAll().subscribe({
-      error: (error) => new CustomException(error.error),
+      error: (error) => console.log(error),
     });
   }
 }
