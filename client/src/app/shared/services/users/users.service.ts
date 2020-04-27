@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { IUser } from '../../models/user.model';
+import { IUser, INewUser } from '../../models/user.model';
 import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
 
@@ -17,7 +17,13 @@ export class UsersService {
       user
     );
 
-  register() {}
+  register = (user: INewUser) =>
+    this.http.post(
+      environment.GATEWAY_URL +
+        environment.ENDPOINT_USERS +
+        environment.ENPOINT_REGISTER,
+      user
+    );
 
   isLoggued() {}
 }
