@@ -10,10 +10,12 @@ import {
 import { UsersService } from './users.service';
 import { IUser, IUserDto } from './user.model';
 import { Response, Request } from 'express';
-import { map, switchMap } from 'rxjs/operators';
+import { map, switchMap, tap } from 'rxjs/operators';
 import { AuthService } from 'src/services/auth/auth.service';
 import { IAxiosError } from 'src/exceptions/axios.error';
 import { CryptoService } from 'src/services/crypto/crypto.service';
+import { PasswordError } from 'src/exceptions/password-incorrect.error';
+import { throwError } from 'rxjs';
 
 @Controller('users')
 export class UsersController {
@@ -43,7 +45,13 @@ export class UsersController {
   login(@Body() user: IUserDto, @Res() res: Response) {
     this.usersService
       .getByUsername(user.username)
-      .pipe(switchMap((user: IUser) => this.authService.createToken(user)))
+      .pipe(
+        switchMap((userBd: IUser) => {
+          if (user.password !== userBd.password)
+            return throwError(new PasswordError());
+          return this.authService.createToken(userBd);
+        }),
+      )
       .subscribe(
         (token: string) => res.status(HttpStatus.OK).send(token),
         (error: IAxiosError) => res.status(error.status).send(error.data),

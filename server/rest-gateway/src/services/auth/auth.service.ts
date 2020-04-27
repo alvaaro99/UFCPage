@@ -2,7 +2,7 @@ import { Injectable, HttpService } from '@nestjs/common';
 import { map, catchError } from 'rxjs/operators';
 import { throwError } from 'rxjs';
 import { IUser } from 'src/users/user.model';
-import { NotFoundError } from 'src/exceptions/notFound.error';
+import { NotFoundError } from 'src/exceptions/not-found-page.error';
 
 @Injectable()
 export class AuthService {
