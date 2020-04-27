@@ -20,6 +20,7 @@ import { NoRepeatPipe } from './shared/pipes/no-repeat/no-repeat.pipe';
 import { LoginComponent } from './views/login/login.component';
 import { LoginFormComponent } from './shared/components/login-form/login-form.component';
 import { RegisterFormComponent } from './shared/components/register-form/register-form.component';
+import { UserComponent } from './views/user/user.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { RegisterFormComponent } from './shared/components/register-form/registe
     LoginComponent,
     LoginFormComponent,
     RegisterFormComponent,
+    UserComponent,
   ],
   imports: [
     BrowserModule,
