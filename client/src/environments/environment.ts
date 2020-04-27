@@ -11,6 +11,7 @@ export const environment = {
   PRODUCT_URL: 'http://localhost:9998/',
   ENDPOINT_USERS: 'users/',
   ENPOINT_LOGIN: 'login/',
+  ENPOINT_REGISTER: 'register/',
 };
 
 /*
