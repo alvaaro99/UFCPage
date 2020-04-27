@@ -10,8 +10,8 @@ export const environment = {
   ENDPOINT_RANKING: 'ranking/',
   PRODUCT_URL: 'http://localhost:9998/',
   ENDPOINT_USERS: 'users/',
-  ENPOINT_LOGIN: 'login/',
-  ENPOINT_REGISTER: 'register/',
+  ENDPOINT_LOGIN: 'login/',
+  ENDPOINT_REGISTER: 'register/',
 };
 
 /*
