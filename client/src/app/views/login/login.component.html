@@ -1,9 +1,12 @@
 <div class="m-5">
-  <h2 *ngIf="!registered" (click)="registered = !registered">Entra Aqui!</h2>
-  <h2 *ngIf="registered" (click)="registered = !registered">
-    Registrate Aqui!
-  </h2>
-
   <app-login-form *ngIf="registered"></app-login-form>
   <app-register-form *ngIf="!registered"></app-register-form>
+  <div class="mt-3">
+    <h2 *ngIf="!registered" (click)="registered = !registered">
+      ¿Ya tienes cuenta? Pincha aqui
+    </h2>
+    <h2 *ngIf="registered" (click)="registered = !registered">
+      ¿No estas registrado? Pincha aqui
+    </h2>
+  </div>
 </div>
