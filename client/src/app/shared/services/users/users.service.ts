@@ -13,7 +13,7 @@ export class UsersService {
     this.http.post(
       environment.GATEWAY_URL +
         environment.ENDPOINT_USERS +
-        environment.ENPOINT_LOGIN,
+        environment.ENDPOINT_LOGIN,
       user
     );
 
@@ -21,7 +21,7 @@ export class UsersService {
     this.http.post(
       environment.GATEWAY_URL +
         environment.ENDPOINT_USERS +
-        environment.ENPOINT_REGISTER,
+        environment.ENDPOINT_REGISTER,
       user
     );
 
