@@ -31,7 +31,7 @@ export class UsersController {
       .getById(+req.headers.authorization['id'])
       .pipe(
         map((user: IUser) => {
-          user.password = this.cryptoService.decrypt(user.password);
+          user.password = '';
           return user;
         }),
       )
