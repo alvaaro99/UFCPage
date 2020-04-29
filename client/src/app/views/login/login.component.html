@@ -1,6 +1,9 @@
 <div class="m-5">
   <app-login-form *ngIf="registered" (onLogin)="login($event)"></app-login-form>
-  <app-register-form *ngIf="!registered"></app-register-form>
+  <app-register-form
+    *ngIf="!registered"
+    (onRegister)="register($event)"
+  ></app-register-form>
   <div class="mt-3">
     <h2 *ngIf="!registered" (click)="registered = !registered">
       ¿Ya tienes cuenta? Pincha aqui

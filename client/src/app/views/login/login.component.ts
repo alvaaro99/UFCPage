@@ -4,7 +4,7 @@ import { UsersService } from 'src/app/shared/services/users/users.service';
 import { Location } from '@angular/common';
 import { map, tap } from 'rxjs/operators';
 import { CustomException } from 'src/app/shared/exceptions/custom.exception';
-import { IUser } from 'src/app/shared/models/user.model';
+import { IUser, INewUser } from 'src/app/shared/models/user.model';
 
 @Component({
   selector: 'app-login',
@@ -38,6 +38,18 @@ export class LoginComponent implements OnInit {
           this.userService.isLoggued = true;
           this.location.back();
         })
+      )
+      .subscribe({ error: ({ error }) => new CustomException(error) });
+  }
+
+  register(userData: INewUser) {
+    this.userService
+      .register(userData)
+      .pipe(
+        map(({ token }: { token: string }) =>
+          this.storageService.saveToken(token)
+        ),
+        tap(() => this.location.back())
       )
       .subscribe({ error: ({ error }) => new CustomException(error) });
   }

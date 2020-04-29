@@ -1,10 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { UsersService } from '../../services/users/users.service';
-import { LocalStorageService } from '../../services/localstorage/local-storage.service';
-import { Location } from '@angular/common';
-import { map, tap } from 'rxjs/operators';
-import { CustomException } from '../../exceptions/custom.exception';
 
 @Component({
   selector: 'app-register-form',
@@ -12,12 +7,9 @@ import { CustomException } from '../../exceptions/custom.exception';
   styleUrls: ['./register-form.component.css'],
 })
 export class RegisterFormComponent implements OnInit {
+  @Output() onRegister = new EventEmitter<FormGroup>();
   userData: FormGroup;
-  constructor(
-    private userService: UsersService,
-    private storageService: LocalStorageService,
-    private location: Location
-  ) {
+  constructor() {
     this.userData = new FormGroup({
       username: new FormControl(
         '',
@@ -30,15 +22,7 @@ export class RegisterFormComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  register() {
-    this.userService
-      .register(this.userData.value)
-      .pipe(
-        map(({ token }: { token: string }) =>
-          this.storageService.saveToken(token)
-        ),
-        tap(() => this.location.back())
-      )
-      .subscribe({ error: ({ error }) => new CustomException(error) });
+  registerUser() {
+    this.onRegister.emit(this.userData.value);
   }
 }
