@@ -1,11 +1,27 @@
 <form [formGroup]="userData">
   <div class="form-group">
     <label for="username">Usuario</label>
-    <input type="text" class="form-control" formControlName="username" />
+    <input
+      type="text"
+      class="form-control"
+      formControlName="username"
+      [ngClass]="{
+        'is-invalid':
+          userData.controls.username.invalid && userData.controls.username.dirty
+      }"
+    />
   </div>
   <div class="form-group">
     <label for="password">Password</label>
-    <input type="password" class="form-control" formControlName="password" />
+    <input
+      type="password"
+      class="form-control"
+      formControlName="password"
+      [ngClass]="{
+        'is-invalid':
+          userData.controls.password.invalid && userData.controls.password.dirty
+      }"
+    />
   </div>
   <div class="form-group">
     <label for="birthdate">Fecha de nacimiento</label>
