@@ -7,12 +7,21 @@ import {
 } from '@angular/router';
 
 import { UsersService } from '../../services/users/users.service';
+import { LocalStorageService } from '../../services/localstorage/local-storage.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class LogguedGuard implements CanActivate {
-  constructor(private router: Router, private userService: UsersService) {}
+  constructor(
+    private router: Router,
+    private userService: UsersService,
+    private storageService: LocalStorageService
+  ) {
+    !this.storageService.getToken()
+      ? (this.userService.isLoggued = false)
+      : (this.userService.isLoggued = true);
+  }
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
     if (this.userService.isLoggued) return true;
     this.router.navigate(['/login'], {
