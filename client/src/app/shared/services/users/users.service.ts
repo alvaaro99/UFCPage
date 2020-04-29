@@ -25,4 +25,12 @@ export class UsersService {
         environment.ENDPOINT_REGISTER,
       user
     );
+
+  info = (token: string) =>
+    this.http.get(
+      environment.GATEWAY_URL +
+        environment.ENDPOINT_USERS +
+        environment.ENDPOINT_ME,
+      { headers: { authorization: token } }
+    );
 }
