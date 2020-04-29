@@ -3,7 +3,7 @@ import { LocalStorageService } from 'src/app/shared/services/localstorage/local-
 import { UsersService } from 'src/app/shared/services/users/users.service';
 import { map, tap } from 'rxjs/operators';
 import { CustomException } from 'src/app/shared/exceptions/custom.exception';
-import { IUser, INewUser } from 'src/app/shared/models/user.model';
+import { IUser, ILoginUser } from 'src/app/shared/models/user.model';
 import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -27,7 +27,7 @@ export class LoginComponent implements OnInit {
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
   }
 
-  login(userData: IUser) {
+  login(userData: ILoginUser) {
     this.userService
       .login(userData)
       .pipe(
@@ -42,7 +42,7 @@ export class LoginComponent implements OnInit {
       .subscribe({ error: ({ error }) => new CustomException(error) });
   }
 
-  register(userData: INewUser) {
+  register(userData: IUser) {
     this.userService
       .register(userData)
       .pipe(
