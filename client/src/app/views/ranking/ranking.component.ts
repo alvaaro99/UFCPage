@@ -10,6 +10,7 @@ import { CustomException } from 'src/app/shared/exceptions/custom.exception';
 export class RankingComponent implements OnInit {
   public weightToShow: string;
   public dateToShow: string;
+
   constructor(public rankingService: RankingService) {}
 
   ngOnInit(): void {
@@ -19,8 +20,9 @@ export class RankingComponent implements OnInit {
   }
 
   getAll() {
-    this.rankingService
-      .getAll()
-      .subscribe({ error: (error) => new CustomException(error.error) });
+    if (this.rankingService.ranking.length === 0)
+      this.rankingService
+        .getAll()
+        .subscribe({ error: (error) => new CustomException(error.error) });
   }
 }
