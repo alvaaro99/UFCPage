@@ -20,9 +20,6 @@ export class LoginComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute
   ) {
-    !this.storageService.getToken()
-      ? (this.userService.isLoggued = false)
-      : (this.userService.isLoggued = true);
     this.registered = true;
   }
 
