@@ -1,9 +1,9 @@
-export interface IUser {
+export interface ILoginUser {
   username: string;
   password: string;
 }
 
-export interface INewUser {
+export interface IUser {
   username: string;
   password: string;
   birthdate: Date;
