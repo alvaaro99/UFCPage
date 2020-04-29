@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { LocalStorageService } from 'src/app/shared/services/localstorage/local-storage.service';
 import { UsersService } from 'src/app/shared/services/users/users.service';
-import { Location } from '@angular/common';
 import { map, tap } from 'rxjs/operators';
 import { CustomException } from 'src/app/shared/exceptions/custom.exception';
 import { IUser, INewUser } from 'src/app/shared/models/user.model';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -13,18 +13,21 @@ import { IUser, INewUser } from 'src/app/shared/models/user.model';
 })
 export class LoginComponent implements OnInit {
   registered: boolean;
+  returnUrl: string;
   constructor(
     private userService: UsersService,
     private storageService: LocalStorageService,
-    private location: Location
+    private router: Router,
+    private route: ActivatedRoute
   ) {
-    this.registered = true;
-  }
-
-  ngOnInit(): void {
     !this.storageService.getToken()
       ? (this.userService.isLoggued = false)
       : (this.userService.isLoggued = true);
+    this.registered = true;
+  }
+
+  ngOnInit() {
+    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
   }
 
   login(userData: IUser) {
@@ -36,7 +39,7 @@ export class LoginComponent implements OnInit {
         ),
         tap(() => {
           this.userService.isLoggued = true;
-          this.location.back();
+          this.router.navigateByUrl(this.returnUrl);
         })
       )
       .subscribe({ error: ({ error }) => new CustomException(error) });
@@ -49,7 +52,10 @@ export class LoginComponent implements OnInit {
         map(({ token }: { token: string }) =>
           this.storageService.saveToken(token)
         ),
-        tap(() => this.location.back())
+        tap(() => {
+          this.userService.isLoggued = true;
+          this.router.navigateByUrl(this.returnUrl);
+        })
       )
       .subscribe({ error: ({ error }) => new CustomException(error) });
   }
