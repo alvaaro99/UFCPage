@@ -7,6 +7,7 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root',
 })
 export class UsersService {
+  isLoggued: boolean;
   constructor(private http: HttpClient) {}
 
   login = (user: IUser) =>
@@ -24,6 +25,4 @@ export class UsersService {
         environment.ENDPOINT_REGISTER,
       user
     );
-
-  isLoggued() {}
 }
