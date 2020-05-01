@@ -15,6 +15,6 @@ export async function validateToken(req: Request, res: Response) {
 		const decodedToken = jwt.verify(token, 'ufc-page');
 		return res.status(httpStatus.OK).send(decodedToken);
 	} catch (error) {
-		return res.status(httpStatus.FORBIDDEN).send(error.message);
+		return res.status(httpStatus.FORBIDDEN).send({ message: error.message });
 	}
 }
