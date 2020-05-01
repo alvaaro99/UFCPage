@@ -1,18 +1,55 @@
 <form [formGroup]="userData">
   <div class="form-group">
-    <label for="username">Usuario</label>
+    <label for="name">Nombre</label>
     <input
       type="text"
       class="form-control"
-      formControlName="username"
+      formControlName="name"
       [ngClass]="{
         'is-invalid':
-          userData.controls.username.invalid && userData.controls.username.dirty
+          userData.controls.name.invalid && userData.controls.name.dirty
       }"
     />
   </div>
   <div class="form-group">
-    <label for="password">Password</label>
+    <label for="surname">Apellidos</label>
+    <input
+      type="text"
+      class="form-control"
+      formControlName="surname"
+      [ngClass]="{
+        'is-invalid':
+          userData.controls.surname.invalid && userData.controls.surname.dirty
+      }"
+    />
+  </div>
+  <div class="form-group">
+    <label for="email">Email</label>
+    <input
+      type="text"
+      class="form-control"
+      formControlName="email"
+      [ngClass]="{
+        'is-invalid':
+          userData.controls.email.invalid && userData.controls.email.dirty
+      }"
+    />
+  </div>
+  <div class="form-group">
+    <label for="alias">Alias</label>
+    <input
+      type="text"
+      class="form-control"
+      formControlName="alias"
+      [ngClass]="{
+        'is-invalid':
+          userData.controls.alias.invalid && userData.controls.alias.dirty
+      }"
+    />
+  </div>
+  <div class="form-group">
+    <label for="password">Contraseña</label>
+
     <input
       type="password"
       class="form-control"
@@ -29,8 +66,34 @@
       type="date"
       class="form-control"
       formControlName="birthdate"
+      min="1900-01-01"
       max="2015-12-31"
     />
+  </div>
+  <div class="form-group">
+    <label for="gender">Genero</label><br />
+    <div class="form-check form-check-inline">
+      <input
+        class="form-check-input"
+        type="radio"
+        value="H"
+        formControlName="gender"
+      />
+      <label class="form-check-label" for="hombre">Hombre</label>
+    </div>
+    <div class="form-check form-check-inline">
+      <input
+        class="form-check-input"
+        type="radio"
+        value="M"
+        formControlName="gender"
+      />
+      <label class="form-check-label" for="mujer">Mujer</label>
+    </div>
+    <div class="form-check form-check-inline">
+      <input class="form-check-input" type="radio" formControlName="gender" />
+      <label class="form-check-label" for="uknown">Sin especificar</label>
+    </div>
   </div>
   <button
     (click)="registerUser()"

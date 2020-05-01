@@ -11,18 +11,35 @@ export class RegisterFormComponent implements OnInit {
   userData: FormGroup;
   constructor() {
     this.userData = new FormGroup({
-      username: new FormControl(
+      alias: new FormControl(
         '',
-        Validators.compose([Validators.minLength(3), Validators.required])
+        Validators.compose([
+          Validators.minLength(3),
+          Validators.maxLength(255),
+          Validators.required,
+        ])
       ),
       password: new FormControl(
         '',
         Validators.compose([Validators.required, Validators.minLength(3)])
       ),
       birthdate: new FormControl('', Validators.required),
+      name: new FormControl(
+        '',
+        Validators.compose([Validators.required, Validators.maxLength(100)])
+      ),
+      surname: new FormControl('', Validators.maxLength(100)),
+      email: new FormControl(
+        '',
+        Validators.compose([
+          Validators.required,
+          Validators.email,
+          Validators.maxLength(100),
+        ])
+      ),
+      gender: new FormControl(null),
     });
   }
-
   ngOnInit(): void {}
 
   registerUser() {
