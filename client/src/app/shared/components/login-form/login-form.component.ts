@@ -11,7 +11,7 @@ export class LoginFormComponent implements OnInit {
   userData: FormGroup;
   constructor() {
     this.userData = new FormGroup({
-      username: new FormControl(
+      alias: new FormControl(
         '',
         Validators.compose([Validators.minLength(3), Validators.required])
       ),

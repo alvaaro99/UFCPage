@@ -1,13 +1,13 @@
 <form [formGroup]="userData">
   <div class="form-group">
-    <label for="username">Usuario</label>
+    <label for="alias">Alias</label>
     <input
       type="text"
       class="form-control"
-      formControlName="username"
+      formControlName="alias"
       [ngClass]="{
         'is-invalid':
-          userData.controls.username.invalid && userData.controls.username.dirty
+          userData.controls.alias.invalid && userData.controls.alias.dirty
       }"
     />
   </div>
