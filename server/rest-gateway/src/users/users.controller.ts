@@ -8,7 +8,7 @@ import {
   HttpStatus,
 } from '@nestjs/common';
 import { UsersService } from './users.service';
-import { IUser, IUserDto } from './user.model';
+import { IUser, IUserLogin } from './user.model';
 import { Response, Request } from 'express';
 import { map, switchMap, tap } from 'rxjs/operators';
 import { AuthService } from 'src/services/auth/auth.service';
@@ -42,9 +42,9 @@ export class UsersController {
   }
 
   @Post('/login')
-  login(@Body() user: IUserDto, @Res() res: Response) {
+  login(@Body() user: IUserLogin, @Res() res: Response) {
     this.usersService
-      .getByUsername(user.username)
+      .getByAlias(user.alias)
       .pipe(
         switchMap((userBd: IUser) => {
           if (user.password !== userBd.password)
@@ -59,7 +59,7 @@ export class UsersController {
   }
 
   @Post('/register')
-  register(@Body() user: IUserDto, @Res() res: Response) {
+  register(@Body() user: IUser, @Res() res: Response) {
     user.password = this.cryptoService.encrypt(user.password);
     this.usersService
       .register(user)

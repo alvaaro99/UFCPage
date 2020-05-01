@@ -1,7 +1,7 @@
 import { Injectable, HttpService } from '@nestjs/common';
 import { map, catchError } from 'rxjs/operators';
 import { throwError } from 'rxjs';
-import { IUserDto } from './user.model';
+import { IUser } from './user.model';
 import { NotFoundError } from 'src/exceptions/not-found-page.error';
 
 @Injectable()
@@ -18,8 +18,8 @@ export class UsersService {
       ),
     );
 
-  getByUsername = (username: string) =>
-    this.httpClient.get(`${process.env.USERS_NAME_URL}/${username}`).pipe(
+  getByAlias = (alias: string) =>
+    this.httpClient.get(`${process.env.USERS_NAME_URL}/${alias}`).pipe(
       map(response => response.data),
       catchError(error =>
         !error.response
@@ -28,7 +28,7 @@ export class UsersService {
       ),
     );
 
-  register = (user: IUserDto) =>
+  register = (user: IUser) =>
     this.httpClient.post(process.env.USERS_URL, user).pipe(
       map(response => response.data),
       catchError(error =>
