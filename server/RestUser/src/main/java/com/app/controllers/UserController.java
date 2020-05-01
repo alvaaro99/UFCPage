@@ -42,10 +42,10 @@ public class UserController {
 		
 	}
 	
-	@GetMapping("/name/{username}") 
-	public ResponseEntity<?> getOneByUsername(@PathVariable String username) {
-		User result = userRepository.findByUsername(username);
-		if(result == null) return new ResponseEntity<ErrorRest>(new ErrorRest("No hay usuario con el nombre "+username),HttpStatus.NOT_FOUND);
+	@GetMapping("/name/{alias}") 
+	public ResponseEntity<?> getOneByAlias(@PathVariable String alias) {
+		User result = userRepository.findByAlias(alias);
+		if(result == null) return new ResponseEntity<ErrorRest>(new ErrorRest("No hay usuario con el nombre "+alias),HttpStatus.NOT_FOUND);
 			return new ResponseEntity<User>(result,HttpStatus.OK);
 		
 	}
@@ -53,12 +53,15 @@ public class UserController {
 	@PostMapping("")
 	public ResponseEntity<?> create(RequestEntity<User> reqUser) {
 		User user = reqUser.getBody();
-		if(user.getUsername().isBlank() || user.getPassword().isBlank() || user.getBirthdate() == null)  return new ResponseEntity<ErrorRest>(new ErrorRest("Usuario mal formado"),HttpStatus.BAD_REQUEST);
+		if(user.getAlias().isBlank() || user.getPassword().isBlank() || user.getBirthdate() == null || user.getEmail().isBlank() || user.getName().isBlank() || user.getSurname().isBlank())  return new ResponseEntity<ErrorRest>(new ErrorRest("Usuario mal formado"),HttpStatus.BAD_REQUEST);
 		
 		if(userRepository.findById(user.getId()).isPresent() && user.getId() != 0) return new ResponseEntity<ErrorRest>(new ErrorRest("El usuario con ID " + user.getId() + " ya existe"),
 				HttpStatus.CONFLICT); 
 		
-		if(userRepository.findByUsername(user.getUsername()) != null) return new ResponseEntity<ErrorRest>(new ErrorRest("El usuario con nombre " + user.getUsername() + " ya existe"),
+		if(userRepository.findByEmail(user.getEmail()) != null) return new ResponseEntity<ErrorRest>(new ErrorRest("El usuario con email " + user.getEmail() + " ya existe"),
+				HttpStatus.CONFLICT);
+		
+		if(userRepository.findByAlias(user.getAlias()) != null) return new ResponseEntity<ErrorRest>(new ErrorRest("El usuario con alias " + user.getAlias() + " ya existe"),
 				HttpStatus.CONFLICT);
 		
 		return new ResponseEntity<User>(userRepository.save(user), HttpStatus.CREATED);
@@ -68,7 +71,7 @@ public class UserController {
 	@PutMapping("")
 	public ResponseEntity<?> update(RequestEntity<User> reqUser) {
 		User user = reqUser.getBody();
-		if(user.getUsername().isBlank() || user.getPassword().isBlank() || user.getBirthdate() == null)  return new ResponseEntity<ErrorRest>(new ErrorRest("Usuario mal formado"),HttpStatus.BAD_REQUEST);
+		if(user.getAlias().isBlank() || user.getPassword().isBlank() || user.getBirthdate() == null || user.getEmail().isBlank() || user.getName().isBlank() || user.getSurname().isBlank())  return new ResponseEntity<ErrorRest>(new ErrorRest("Usuario mal formado"),HttpStatus.BAD_REQUEST);
 		
 		if(userRepository.findById(user.getId()).isPresent() && user.getId() != 0) return new ResponseEntity<User>(userRepository.save(user), HttpStatus.OK);
 			
