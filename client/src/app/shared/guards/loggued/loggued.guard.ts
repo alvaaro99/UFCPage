@@ -13,15 +13,7 @@ import { LocalStorageService } from '../../services/localstorage/local-storage.s
   providedIn: 'root',
 })
 export class LogguedGuard implements CanActivate {
-  constructor(
-    private router: Router,
-    private userService: UsersService,
-    private storageService: LocalStorageService
-  ) {
-    !this.storageService.getToken()
-      ? (this.userService.isLoggued = false)
-      : (this.userService.isLoggued = true);
-  }
+  constructor(private router: Router, private userService: UsersService) {}
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
     if (this.userService.isLoggued) return true;
     this.router.navigate(['/login'], {
