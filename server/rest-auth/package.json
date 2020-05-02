@@ -23,7 +23,8 @@
 	"scripts": {
 		"dev": "nodemon src/index.ts --exec ts-node",
 		"build": "tsc",
-		"test": "echo \"Error: no test specified\" && exit 1"
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"start": "tsc && node dist/index.js"
 	},
 	"author": "Alvaro Acosta",
 	"license": "ISC"
