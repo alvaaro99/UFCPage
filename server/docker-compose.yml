@@ -1,5 +1,36 @@
 version: '2'
 services:
+  db-users:
+    container_name: db-users
+    restart: always
+    build:
+      context: ./databases/users
+      dockerfile: mysql.dockerfile
+    ports:
+      - '3301:3306'
+
+  db-fighters-ranking:
+    container_name: db-fighters-ranking
+    restart: always
+    build:
+      context: ./databases/fighters-ranking
+      dockerfile: mongo.dockerfile
+    ports:
+      - '3308:27017'
+    environment:
+      MONGO_INITDB_DATABASE: ranking
+
+  db-products:
+    container_name: db-products
+    restart: always
+    build:
+      context: ./databases/products
+      dockerfile: mysql.dockerfile
+    ports:
+      - '3303:3306'
+    volumes:
+      - ./databases/products/custom.cnf:/etc/mysql/conf.d/custom.cnf
+
   app-users:
     container_name: app-users
     restart: always
@@ -36,33 +67,11 @@ services:
     ports:
       - '9995:80'
 
-  db-users:
-    container_name: db-users
+  app-auth:
+    container_name: app-auth
     restart: always
     build:
-      context: ./databases/users
-      dockerfile: mysql.dockerfile
+      context: ./rest-auth
+      dockerfile: Dockerfile
     ports:
-      - '3301:3306'
-
-  db-fighters-ranking:
-    container_name: db-fighters-ranking
-    restart: always
-    build:
-      context: ./databases/fighters-ranking
-      dockerfile: mongo.dockerfile
-    ports:
-      - '3308:27017'
-    environment:
-      MONGO_INITDB_DATABASE: ranking
-
-  db-products:
-    container_name: db-products
-    restart: always
-    build:
-      context: ./databases/products
-      dockerfile: mysql.dockerfile
-    ports:
-      - '3303:3306'
-    volumes:
-      - ./databases/products/custom.cnf:/etc/mysql/conf.d/custom.cnf
+      - '9999:9999'
