@@ -21,6 +21,7 @@ import { LoginComponent } from './views/login/login.component';
 import { LoginFormComponent } from './shared/components/login-form/login-form.component';
 import { RegisterFormComponent } from './shared/components/register-form/register-form.component';
 import { UserComponent } from './views/user/user.component';
+import { UserCardComponent } from './shared/components/user-card/user-card.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import { UserComponent } from './views/user/user.component';
     LoginFormComponent,
     RegisterFormComponent,
     UserComponent,
+    UserCardComponent,
   ],
   imports: [
     BrowserModule,
