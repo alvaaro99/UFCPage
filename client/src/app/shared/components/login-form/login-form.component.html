@@ -1,4 +1,4 @@
-<form [formGroup]="userData">
+<form [formGroup]="userData" (submit)="loginUser()">
   <div class="form-group">
     <label for="alias">Alias</label>
     <input
@@ -23,12 +23,7 @@
       }"
     />
   </div>
-  <button
-    (click)="loginUser()"
-    [disabled]="userData.invalid"
-    type="button"
-    class="btn btn-primary"
-  >
+  <button [disabled]="userData.invalid" type="submit" class="btn btn-primary">
     Entrar
   </button>
 </form>
