@@ -19,8 +19,9 @@ function simulateFight()
 
 
 
-    if($redFighter->rank === $blueFighter->rank && ($redFighter->rank !=0 || $blueFighter->rank != 0)) return new EvenFight($redFighter,$blueFighter);
-    return new OddFight($redFighter,$blueFighter);
+    if($redFighter->rank === $blueFighter->rank ) return new EvenFight($redFighter,$blueFighter);
+    if($redFighter->rank > $blueFighter->rank) return new OddFight($redFighter,$blueFighter);
+    if($blueFighter->rank > $redFighter->rank) return new OddFight($blueFighter,$redFighter);
 
 }
 
