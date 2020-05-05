@@ -9,7 +9,7 @@
         <option value="all">Peso - Todos</option>
         <option
           *ngFor="
-            let weightclass of rankingService.ranking | noRepeat: 'weightclass'
+            let weightclass of fightersService.ranking | noRepeat: 'weightclass'
           "
           [value]="weightclass"
           >Peso - {{ weightclass | titlecase }}</option
@@ -20,7 +20,7 @@
       <select [(ngModel)]="dateToShow">
         <option value="all">Fecha - Todas</option>
         <option
-          *ngFor="let date of rankingService.ranking | noRepeat: 'date'"
+          *ngFor="let date of fightersService.ranking | noRepeat: 'date'"
           [value]="date"
           >Fecha - {{ date | date: "dd-MM-yyyy" }}</option
         >
@@ -30,7 +30,7 @@
   <tbody>
     <tr
       *ngFor="
-        let fighter of rankingService.ranking
+        let fighter of fightersService.ranking
           | weight: weightToShow
           | dateRanking: dateToShow
       "
