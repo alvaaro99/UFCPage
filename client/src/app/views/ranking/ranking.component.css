@@ -2,6 +2,15 @@ table {
   margin-top: 20px;
 }
 
+select {
+  text-align-last: center;
+  max-width: 60%;
+}
+
+th {
+  vertical-align: middle !important;
+}
+
 thead {
   color: white;
   background: rgba(0, 0, 0, 1);

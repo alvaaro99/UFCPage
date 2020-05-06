@@ -5,7 +5,7 @@
     <th>Altura</th>
     <th>Edad</th>
     <th>
-      <select [(ngModel)]="weightToShow">
+      <select [(ngModel)]="weightToShow" class="custom-select">
         <option value="all">Peso - Todos</option>
         <option
           *ngFor="
@@ -17,7 +17,7 @@
       </select>
     </th>
     <th>
-      <select [(ngModel)]="dateToShow">
+      <select [(ngModel)]="dateToShow" class="custom-select">
         <option value="all">Fecha - Todas</option>
         <option
           *ngFor="let date of fightersService.ranking | noRepeat: 'date'"
