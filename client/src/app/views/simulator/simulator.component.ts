@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CustomException } from 'src/app/shared/exceptions/custom.exception';
 import { SimulatorService } from 'src/app/shared/services/simulator/simulator.service';
-import { tap } from 'rxjs/operators';
 import { IFighter } from 'src/app/shared/models/fighter.model';
 
 @Component({
@@ -14,7 +13,12 @@ export class SimulatorComponent implements OnInit {
   public dateToShow: Date;
   public redFighter: IFighter;
   public blueFighter: IFighter;
-  constructor(public simulatorService: SimulatorService) {}
+  constructor(public simulatorService: SimulatorService) {
+    this.weightToShow = null;
+    this.dateToShow = null;
+    this.redFighter = null;
+    this.blueFighter = null;
+  }
 
   ngOnInit(): void {
     this.getAll();
@@ -24,14 +28,6 @@ export class SimulatorComponent implements OnInit {
     if (this.simulatorService.fighters.length === 0) {
       this.simulatorService
         .getAll()
-        .pipe(
-          tap(() => {
-            this.weightToShow = this.simulatorService.fighters[0].weightclass;
-            this.dateToShow = this.simulatorService.fighters[
-              this.simulatorService.fighters.length - 1
-            ].date;
-          })
-        )
         .subscribe({ error: (error) => new CustomException(error.error) });
     }
   }
