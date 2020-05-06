@@ -23,7 +23,6 @@ export class SimulatorComponent implements OnInit {
   ngOnInit(): void {
     this.getAll();
   }
-
   getAll() {
     if (this.simulatorService.fighters.length === 0) {
       this.simulatorService
