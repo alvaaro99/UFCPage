@@ -1,1 +1,12 @@
-<p>select-fighter works!</p>
+<select
+  class="custom-select"
+  [(ngModel)]="fighterSelected"
+  (change)="emitFighter()"
+>
+  <option value="null" *ngIf="fighterSelected === null">
+    Elija un luchador:</option
+  >
+  <option *ngFor="let fighter of fighters" [ngValue]="fighter">{{
+    fighter.name
+  }}</option>
+</select>
