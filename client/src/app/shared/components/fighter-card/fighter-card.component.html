@@ -1,13 +1,20 @@
 <div class="card" style="width: 18rem;">
-  <img class="card-img-top" src="..." />
+  <img
+    class="card-img-top"
+    src="../../../assets/images/red-gloves-ufc.webp"
+    alt="Red gloves"
+  />
   <div class="card-body">
-    <h5 class="card-title">{{ fighter.name }}</h5>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">
+        <h4><b> Ranking:</b> {{ fighter.rank }}</h4>
+      </li>
+      <li class="list-group-item">
+        <h4><b> Altura:</b> {{ fighter.height }}</h4>
+      </li>
+      <li class="list-group-item">
+        <h4><b> Edad:</b> {{ fighter.birthdate | dateToAge }}</h4>
+      </li>
+    </ul>
   </div>
-  <ul class="list-group list-group-flush">
-    <li class="list-group-item">Peso: {{ fighter.weight }}</li>
-    <li class="list-group-item">Altura: {{ fighter.height }}</li>
-    <li class="list-group-item">Años: {{ fighter.birthdate }}</li>
-    <li class="list-group-item">Alcance: {{ fighter.reach }}</li>
-    <li class="list-group-item">Guardia: {{ fighter.stance }}</li>
-  </ul>
 </div>
