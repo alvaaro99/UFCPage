@@ -5,7 +5,7 @@ import { IFighter } from '../../models/fighter.model';
   name: 'dateRanking',
 })
 export class DateRankingPipe implements PipeTransform {
-  transform(fighters: IFighter[], date: string): IFighter[] {
+  transform(fighters: IFighter[], date: string | Date): IFighter[] {
     if (date === 'all') return fighters;
     return fighters.filter((fighter) => fighter.date.toString() === date);
   }
