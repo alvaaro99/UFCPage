@@ -11,6 +11,10 @@ select {
   text-align-last: center;
 }
 
+app-select-fighter {
+  display: contents;
+}
+
 .select-weight select {
   max-width: 50%;
 }
@@ -18,12 +22,6 @@ select {
   display: flex;
   justify-content: center;
   grid-area: select-weight;
-}
-
-.red-fighter .custom-select,
-.blue-fighter .custom-select {
-  width: 60%;
-  margin-bottom: 1em;
 }
 
 .red-fighter {

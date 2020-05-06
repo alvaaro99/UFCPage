@@ -20,20 +20,14 @@
     </select>
   </div>
   <div class="red-fighter" *ngIf="dateToShow !== null && weightToShow !== null">
-    <select class="custom-select" [(ngModel)]="redFighter">
-      <option value="null" *ngIf="redFighter === null">
-        Elija un luchador:</option
-      >
-      <option
-        *ngFor="
-          let fighter of simulatorService.fighters
-            | weight: weightToShow
-            | dateRanking: dateToShow
-        "
-        [ngValue]="fighter"
-        >{{ fighter.name }}</option
-      >
-    </select>
+    <app-select-fighter
+      [fighters]="
+        simulatorService.fighters
+          | weight: weightToShow
+          | dateRanking: dateToShow
+      "
+      (onSelectFighter)="redFighter = $event"
+    ></app-select-fighter>
     <app-fighter-card
       color="red"
       [fighter]="redFighter"
@@ -44,20 +38,14 @@
     class="blue-fighter"
     *ngIf="dateToShow !== null && weightToShow !== null"
   >
-    <select class="custom-select" [(ngModel)]="blueFighter">
-      <option value="null" *ngIf="blueFighter === null">
-        Elija un luchador:</option
-      >
-      <option
-        *ngFor="
-          let fighter of simulatorService.fighters
-            | weight: weightToShow
-            | dateRanking: dateToShow
-        "
-        [ngValue]="fighter"
-        >{{ fighter.name }}</option
-      >
-    </select>
+    <app-select-fighter
+      [fighters]="
+        simulatorService.fighters
+          | weight: weightToShow
+          | dateRanking: dateToShow
+      "
+      (onSelectFighter)="blueFighter = $event"
+    ></app-select-fighter>
     <app-fighter-card
       color="blue"
       [fighter]="blueFighter"
