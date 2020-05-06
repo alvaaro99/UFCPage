@@ -1,6 +1,7 @@
 <div class="grid-container">
   <div class="select-weight">
     <select [(ngModel)]="weightToShow" class="custom-select">
+      <option value="null" *ngIf="weightToShow === null">Elija un peso:</option>
       <option
         *ngFor="
           let weightclass of simulatorService.fighters | noRepeat: 'weightclass'
@@ -10,6 +11,7 @@
       >
     </select>
     <select [(ngModel)]="dateToShow" class="custom-select">
+      <option value="null" *ngIf="dateToShow === null">Elija una fecha:</option>
       <option
         *ngFor="let date of simulatorService.fighters | noRepeat: 'date'"
         [value]="date"
@@ -17,40 +19,50 @@
       >
     </select>
   </div>
-  <div class="red-fighter">
-    <div class="card" style="width: 18rem;">
-      <img
-        class="card-img-top"
-        src="../../../assets/images/red-gloves-ufc.webp"
-        alt="Red gloves"
-      />
-
-      <select class="custom-select">
-        <option
-          *ngFor="
-            let fighter of simulatorService.fighters
-              | weight: weightToShow
-              | dateRanking: dateToShow
-          "
-          [value]="fighter"
-          >{{ fighter.name }}</option
-        >
-      </select>
-      <div class="card-body">
-        <!-- <ul class="list-group list-group-flush">
-          <li class="list-group-item">
-            <h4><b> Ranking:</b> {{ redFighter.rank }}</h4>
-          </li>
-          <li class="list-group-item">
-            <h4><b> Altura:</b> {{ redFighter.height }}</h4>
-          </li>
-          <li class="list-group-item">
-            <h4><b> Edad:</b> {{ redFighter.birthdate | dateToAge }}</h4>
-          </li>
-        </ul> -->
-      </div>
-    </div>
+  <div class="red-fighter" *ngIf="dateToShow !== null && weightToShow !== null">
+    <select class="custom-select" [(ngModel)]="redFighter">
+      <option value="null" *ngIf="redFighter === null">
+        Elija un luchador:</option
+      >
+      <option
+        *ngFor="
+          let fighter of simulatorService.fighters
+            | weight: weightToShow
+            | dateRanking: dateToShow
+        "
+        [ngValue]="fighter"
+        >{{ fighter.name }}</option
+      >
+    </select>
+    <app-fighter-card
+      color="red"
+      [fighter]="redFighter"
+      *ngIf="redFighter !== null"
+    ></app-fighter-card>
   </div>
-  <div class="blue-fighter"></div>
+  <div
+    class="blue-fighter"
+    *ngIf="dateToShow !== null && weightToShow !== null"
+  >
+    <select class="custom-select" [(ngModel)]="blueFighter">
+      <option value="null" *ngIf="blueFighter === null">
+        Elija un luchador:</option
+      >
+      <option
+        *ngFor="
+          let fighter of simulatorService.fighters
+            | weight: weightToShow
+            | dateRanking: dateToShow
+        "
+        [ngValue]="fighter"
+        >{{ fighter.name }}</option
+      >
+    </select>
+    <app-fighter-card
+      color="blue"
+      [fighter]="blueFighter"
+      *ngIf="blueFighter !== null"
+    ></app-fighter-card>
+  </div>
   <div class="div-fight"></div>
 </div>
