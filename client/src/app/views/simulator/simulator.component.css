@@ -41,5 +41,8 @@ app-select-fighter {
 }
 
 .div-fight {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   grid-area: div-fight;
 }

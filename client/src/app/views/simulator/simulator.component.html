@@ -52,5 +52,7 @@
       *ngIf="blueFighter !== null"
     ></app-fighter-card>
   </div>
-  <div class="div-fight"></div>
+  <div class="div-fight" *ngIf="redFighter !== null && blueFighter !== null">
+    <button class="btn btn-outline-danger">FIGHT!</button>
+  </div>
 </div>
