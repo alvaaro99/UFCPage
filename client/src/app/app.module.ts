@@ -22,6 +22,7 @@ import { LoginFormComponent } from './shared/components/login-form/login-form.co
 import { RegisterFormComponent } from './shared/components/register-form/register-form.component';
 import { UserComponent } from './views/user/user.component';
 import { UserCardComponent } from './shared/components/user-card/user-card.component';
+import { SelectFighterComponent } from './shared/components/select-fighter/select-fighter.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import { UserCardComponent } from './shared/components/user-card/user-card.compo
     RegisterFormComponent,
     UserComponent,
     UserCardComponent,
+    SelectFighterComponent,
   ],
   imports: [
     BrowserModule,
