@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FightersService } from 'src/app/shared/services/fighters/fighters.service';
+import { RankingService } from 'src/app/shared/services/ranking/ranking.service';
 import { CustomException } from 'src/app/shared/exceptions/custom.exception';
 
 @Component({
@@ -11,7 +11,7 @@ export class RankingComponent implements OnInit {
   public weightToShow: string;
   public dateToShow: string;
 
-  constructor(public fightersService: FightersService) {}
+  constructor(public rankingService: RankingService) {}
 
   ngOnInit(): void {
     this.weightToShow = 'all';
@@ -20,8 +20,8 @@ export class RankingComponent implements OnInit {
   }
 
   getAll() {
-    if (this.fightersService.ranking.length === 0)
-      this.fightersService
+    if (this.rankingService.ranking.length === 0)
+      this.rankingService
         .getAll()
         .subscribe({ error: (error) => new CustomException(error.error) });
   }

@@ -7,7 +7,7 @@ import { HttpClient } from '@angular/common/http';
 @Injectable({
   providedIn: 'root',
 })
-export class FightersService {
+export class RankingService {
   ranking: IFighter[] = [];
   constructor(private httpService: HttpClient) {}
 
