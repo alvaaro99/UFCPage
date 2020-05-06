@@ -1,0 +1,41 @@
+.grid-container {
+  display: grid;
+  grid-template-columns: 42% 13% 42%;
+  grid-template-rows: 15% 85%;
+  gap: 1px 1px;
+  grid-template-areas: "select-weight select-weight select-weight" "red-fighter div-fight blue-fighter";
+  text-align: center;
+  margin-top: 3%;
+}
+select {
+  text-align-last: center;
+}
+
+img {
+  align-self: center;
+  width: 50%;
+  height: 50%;
+}
+
+.select-weight select {
+  max-width: 50%;
+}
+.select-weight {
+  display: flex;
+  justify-content: center;
+  grid-area: select-weight;
+}
+
+.red-fighter {
+  display: flex;
+  justify-content: center;
+  grid-area: red-fighter;
+}
+
+.blue-fighter {
+  grid-area: blue-fighter;
+}
+
+.div-fight {
+  grid-area: div-fight;
+}
