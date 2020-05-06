@@ -2,19 +2,13 @@
   display: grid;
   grid-template-columns: 42% 13% 42%;
   grid-template-rows: 15% 85%;
-  gap: 1px 1px;
+  gap: 10px 1px;
   grid-template-areas: "select-weight select-weight select-weight" "red-fighter div-fight blue-fighter";
   text-align: center;
   margin-top: 3%;
 }
 select {
   text-align-last: center;
-}
-
-img {
-  align-self: center;
-  width: 50%;
-  height: 50%;
 }
 
 .select-weight select {
@@ -26,13 +20,25 @@ img {
   grid-area: select-weight;
 }
 
+.red-fighter .custom-select,
+.blue-fighter .custom-select {
+  width: 60%;
+  margin-bottom: 1em;
+}
+
 .red-fighter {
+  min-height: 12em;
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   grid-area: red-fighter;
 }
 
 .blue-fighter {
+  min-height: 12em;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   grid-area: blue-fighter;
 }
 
