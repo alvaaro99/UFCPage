@@ -15,4 +15,10 @@ export class SimulatorService {
     this.http
       .get(environment.GATEWAY_URL + environment.ENDPOINT_SIMULATOR)
       .pipe(map((fighters: IFighter[]) => (this.fighters = fighters)));
+
+  simulate = (red: IFighter, blue: IFighter) =>
+    this.http.post(environment.GATEWAY_URL + environment.ENDPOINT_SIMULATOR, {
+      red,
+      blue,
+    });
 }
