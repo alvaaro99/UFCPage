@@ -17,9 +17,9 @@ class OddFight extends Fight{
 
     function recreateRounds(){
         $number = rand(0,4);
-        ($number <= 2) ? $this->favorite->wonRounds++ :$this->underdog->wonRounds++;
-        if($this->favorite->wonRounds === 10) return $this->favorite;
-        if($this->underdog->wonRounds === 10) return $this->underdog;
+        ($number <= 2) ? $this->red->wonRounds++ :$this->blue->wonRounds++;
+        if($this->red->wonRounds === 10) return $this->red;
+        if($this->blue->wonRounds === 10) return $this->blue;
         return $this->recreateRounds();
     }
 }
