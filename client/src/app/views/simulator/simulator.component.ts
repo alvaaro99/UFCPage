@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { CustomException } from 'src/app/shared/exceptions/custom.exception';
 import { SimulatorService } from 'src/app/shared/services/simulator/simulator.service';
 import { IFighter } from 'src/app/shared/models/fighter.model';
+import { tap } from 'rxjs/operators';
+import { IFight } from 'src/app/shared/models/fight.model';
 
 @Component({
   selector: 'app-simulator',
@@ -29,5 +31,14 @@ export class SimulatorComponent implements OnInit {
         .getAll()
         .subscribe({ error: (error) => new CustomException(error.error) });
     }
+  }
+
+  simulateFight() {
+    this.simulatorService
+      .simulate(this.redFighter, this.blueFighter)
+      .pipe(tap((fight: IFight) => console.log(fight)))
+      .subscribe({
+        error: (error) => new CustomException(error.error),
+      });
   }
 }
