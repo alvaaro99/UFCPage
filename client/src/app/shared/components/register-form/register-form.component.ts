@@ -37,7 +37,7 @@ export class RegisterFormComponent implements OnInit {
           Validators.maxLength(100),
         ])
       ),
-      gender: new FormControl(null),
+      gender: new FormControl(),
     });
   }
   ngOnInit(): void {}
