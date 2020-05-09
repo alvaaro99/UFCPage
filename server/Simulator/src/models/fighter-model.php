@@ -12,6 +12,7 @@ class Fighter{
     public $birthdate;
     public $height;
     public $wonRounds;
+    public $color;
 
     public function __construct($fighter)
     {
