@@ -18,7 +18,7 @@ export class SimulatorService {
 
   simulate = (red: IFighter, blue: IFighter) =>
     this.http.post(environment.GATEWAY_URL + environment.ENDPOINT_SIMULATOR, {
-      red,
-      blue,
+      red: { ...red, color: 'red' },
+      blue: { ...blue, color: 'blue' },
     });
 }
