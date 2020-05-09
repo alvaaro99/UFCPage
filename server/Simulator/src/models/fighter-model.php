@@ -22,6 +22,7 @@ class Fighter{
         $this->birthdate = (isset($fighter['birthdate']))?$fighter['birthdate']: null;
         $this->height = (isset($fighter['height'])) ?$fighter['height']: null;
         $this->wonRounds = 0;
+        $this->color = $fighter['color'];
     }
 
 }
