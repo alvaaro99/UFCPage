@@ -6,4 +6,5 @@ export interface IFighter {
   height: number;
   wonRounds?: number;
   birthdate: Date;
+  color?: string;
 }
