@@ -1,4 +1,4 @@
-<div class="prepare">
+<div class="prepare" [ngClass]="{ 'd-none': resultFight !== null }">
   <div class="select-weight">
     <select [(ngModel)]="weightToShow" class="custom-select">
       <option value="null" *ngIf="weightToShow === null">Elija un peso:</option>
@@ -56,5 +56,24 @@
     <button class="btn btn-outline-danger" (click)="simulateFight()">
       FIGHT!
     </button>
+  </div>
+</div>
+<div
+  class="result"
+  *ngIf="resultFight !== null"
+  [ngClass]="{ 'animated fadeIn slower': resultFight !== null }"
+>
+  <div class="winner">
+    <app-fighter-card
+      [color]="resultFight.winner.color"
+      [fighter]="resultFight.winner"
+    ></app-fighter-card>
+  </div>
+  <div class="referee"></div>
+  <div class="loser">
+    <app-fighter-card
+      [color]="resultFight.loser.color"
+      [fighter]="resultFight.loser"
+    ></app-fighter-card>
   </div>
 </div>
