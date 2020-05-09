@@ -2,8 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { CustomException } from 'src/app/shared/exceptions/custom.exception';
 import { SimulatorService } from 'src/app/shared/services/simulator/simulator.service';
 import { IFighter } from 'src/app/shared/models/fighter.model';
-import { tap } from 'rxjs/operators';
+import { tap, delay } from 'rxjs/operators';
 import { IFight } from 'src/app/shared/models/fight.model';
+import { LoadingAlert } from 'src/app/shared/alerts/loading.alert';
 
 @Component({
   selector: 'app-simulator',
@@ -11,16 +12,13 @@ import { IFight } from 'src/app/shared/models/fight.model';
   styleUrls: ['./simulator.component.css'],
 })
 export class SimulatorComponent implements OnInit {
-  public weightToShow: string;
-  public dateToShow: Date;
-  public redFighter: IFighter;
-  public blueFighter: IFighter;
-  constructor(public simulatorService: SimulatorService) {
-    this.weightToShow = null;
-    this.dateToShow = null;
-    this.redFighter = null;
-    this.blueFighter = null;
-  }
+  public weightToShow: string = null;
+  public dateToShow: Date = null;
+  public redFighter: IFighter = null;
+  public blueFighter: IFighter = null;
+  public resultFight: IFight = null;
+
+  constructor(public simulatorService: SimulatorService) {}
 
   ngOnInit(): void {
     this.getAll();
@@ -34,9 +32,16 @@ export class SimulatorComponent implements OnInit {
   }
 
   simulateFight() {
+    const loadingAlert = new LoadingAlert();
     this.simulatorService
       .simulate(this.redFighter, this.blueFighter)
-      .pipe(tap((fight: IFight) => console.log(fight)))
+      .pipe(
+        delay(1500),
+        tap((fight: IFight) => {
+          loadingAlert.close();
+          this.resultFight = fight;
+        })
+      )
       .subscribe({
         error: (error) => new CustomException(error.error),
       });
