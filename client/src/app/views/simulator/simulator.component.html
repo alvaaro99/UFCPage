@@ -63,6 +63,13 @@
   *ngIf="resultFight !== null"
   [ngClass]="{ 'animated fadeIn slower': resultFight !== null }"
 >
+  <div class="description">
+    <h4>
+      Con una diferencia de
+      {{ resultFight.winner.wonRounds - resultFight.loser.wonRounds }} rounds,
+      ganador por {{ resultFight.winBy }}
+    </h4>
+  </div>
   <div class="winner">
     <app-fighter-card
       [color]="resultFight.winner.color"
@@ -75,5 +82,10 @@
       [color]="resultFight.loser.color"
       [fighter]="resultFight.loser"
     ></app-fighter-card>
+  </div>
+  <div class="new mt-1">
+    <button type="button" class="btn btn-outline-warning" (click)="newFight()">
+      Nueva Pelea
+    </button>
   </div>
 </div>

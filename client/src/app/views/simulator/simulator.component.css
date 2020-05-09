@@ -48,12 +48,21 @@ app-select-fighter {
 }
 
 .result {
+  text-align: center;
   margin-top: 3%;
   display: grid;
   grid-template-columns: 1fr 0.5fr 1fr;
-  grid-template-rows: 1fr;
+  grid-template-rows: 0.3fr 1.7fr 0.3fr;
   gap: 1px 1px;
-  grid-template-areas: "winner referee loser";
+  grid-template-areas: "description description description" "winner referee loser" "new new new";
+}
+
+.description {
+  grid-area: description;
+}
+
+.new {
+  grid-area: new;
 }
 
 .winner {
@@ -66,6 +75,7 @@ app-select-fighter {
   grid-area: referee;
   background-image: url("../../../assets/images/referee.jpg");
   background-repeat: no-repeat;
+  width: 280px;
 }
 
 .loser {
