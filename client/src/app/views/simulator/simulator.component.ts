@@ -46,4 +46,12 @@ export class SimulatorComponent implements OnInit {
         error: (error) => new CustomException(error.error),
       });
   }
+
+  newFight() {
+    this.weightToShow = null;
+    this.dateToShow = null;
+    this.redFighter = null;
+    this.blueFighter = null;
+    this.resultFight = null;
+  }
 }
