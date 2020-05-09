@@ -47,6 +47,7 @@ export class UsersController {
       .getByAlias(user.alias)
       .pipe(
         switchMap((userBd: IUser) => {
+          userBd.password = this.cryptoService.decrypt(userBd.password);
           if (user.password !== userBd.password)
             return throwError(new PasswordError());
           return this.authService.createToken(userBd);
