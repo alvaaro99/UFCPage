@@ -32,7 +32,7 @@ const routes: Routes = [
       import('./views/user/user.module').then((m) => m.UserModule),
     canActivate: [LogguedGuard],
   },
-  { path: '', redirectTo: 'ranking', pathMatch: 'full' },
+  { path: '**', redirectTo: 'ranking' },
 ];
 
 @NgModule({
