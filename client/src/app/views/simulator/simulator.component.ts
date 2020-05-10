@@ -54,4 +54,8 @@ export class SimulatorComponent implements OnInit {
     this.blueFighter = null;
     this.resultFight = null;
   }
+
+  repeatFight() {
+    this.resultFight = null;
+  }
 }
