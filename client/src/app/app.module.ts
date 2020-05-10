@@ -23,6 +23,7 @@ import { RegisterFormComponent } from './shared/components/register-form/registe
 import { UserComponent } from './views/user/user.component';
 import { UserCardComponent } from './shared/components/user-card/user-card.component';
 import { SelectFighterComponent } from './shared/components/select-fighter/select-fighter.component';
+import { ResultFightComponent } from './shared/components/result-fight/result-fight.component';
 
 @NgModule({
   declarations: [
@@ -44,6 +45,7 @@ import { SelectFighterComponent } from './shared/components/select-fighter/selec
     UserComponent,
     UserCardComponent,
     SelectFighterComponent,
+    ResultFightComponent,
   ],
   imports: [
     BrowserModule,
