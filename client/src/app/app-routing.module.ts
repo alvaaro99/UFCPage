@@ -11,7 +11,11 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'ranking', component: RankingComponent },
   { path: 'shop', component: ShopComponent },
-  { path: 'simulator', component: SimulatorComponent },
+  {
+    path: 'simulator',
+    component: SimulatorComponent,
+    canActivate: [LogguedGuard],
+  },
   { path: 'me', component: UserComponent, canActivate: [LogguedGuard] },
 ];
 
