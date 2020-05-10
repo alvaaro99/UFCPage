@@ -1,0 +1,36 @@
+.result {
+  text-align: center;
+  margin-top: 3%;
+  display: grid;
+  grid-template-columns: 1fr 0.5fr 1fr;
+  grid-template-rows: 0.3fr 1.7fr 0.3fr;
+  gap: 1px 1px;
+  grid-template-areas: "description description description" "winner referee loser" "new new new";
+}
+
+.description {
+  grid-area: description;
+}
+
+.new {
+  grid-area: new;
+}
+
+.winner {
+  grid-area: winner;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.referee {
+  grid-area: referee;
+  background-image: url("/assets/images/referee.jpg");
+  background-repeat: no-repeat;
+  width: 280px;
+}
+
+.loser {
+  grid-area: loser;
+  display: flex;
+  justify-content: flex-start;
+}
