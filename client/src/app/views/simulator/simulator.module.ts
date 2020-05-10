@@ -6,6 +6,7 @@ import { ResultFightComponent } from '../../shared/components/result-fight/resul
 import { FighterCardComponent } from '../../shared/components/fighter-card/fighter-card.component';
 import { CustomPipesModule } from 'src/app/shared/pipes/custom-pipes.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { SimulatorRoutingModule } from './simulator-routing.module';
 
 @NgModule({
   declarations: [
@@ -14,6 +15,12 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     FighterCardComponent,
     SimulatorComponent,
   ],
-  imports: [CommonModule, FormsModule, ReactiveFormsModule, CustomPipesModule],
+  imports: [
+    CommonModule,
+    SimulatorRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+    CustomPipesModule,
+  ],
 })
 export class SimulatorModule {}

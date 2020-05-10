@@ -1,22 +1,38 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { RankingComponent } from './views/ranking/ranking.component';
-import { ShopComponent } from './views/shop/shop.component';
-import { SimulatorComponent } from './views/simulator/simulator.component';
-import { LoginComponent } from './views/login/login.component';
-import { UserComponent } from './views/user/user.component';
 import { LogguedGuard } from './shared/guards/loggued/loggued.guard';
 
 const routes: Routes = [
-  { path: 'login', component: LoginComponent },
-  { path: 'ranking', component: RankingComponent },
-  { path: 'shop', component: ShopComponent },
+  {
+    path: 'login',
+    loadChildren: () =>
+      import('./views/login/login.module').then((m) => m.LoginModule),
+  },
+  {
+    path: 'ranking',
+    loadChildren: () =>
+      import('./views/ranking/ranking.module').then((m) => m.RankingModule),
+  },
+  {
+    path: 'shop',
+    loadChildren: () =>
+      import('./views/shop/shop.module').then((m) => m.ShopModule),
+  },
   {
     path: 'simulator',
-    component: SimulatorComponent,
+    loadChildren: () =>
+      import('./views/simulator/simulator.module').then(
+        (m) => m.SimulatorModule
+      ),
     canActivate: [LogguedGuard],
   },
-  { path: 'me', component: UserComponent, canActivate: [LogguedGuard] },
+  {
+    path: 'me',
+    loadChildren: () =>
+      import('./views/user/user.module').then((m) => m.UserModule),
+    canActivate: [LogguedGuard],
+  },
+  { path: '', redirectTo: 'ranking', pathMatch: 'full' },
 ];
 
 @NgModule({
