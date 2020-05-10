@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { LocalStorageService } from 'src/app/shared/services/localstorage/local-storage.service';
 import { UsersService } from 'src/app/shared/services/users/users.service';
-import { map, catchError } from 'rxjs/operators';
+import { catchError, tap } from 'rxjs/operators';
 import { IUser } from 'src/app/shared/models/user.model';
 import { throwError } from 'rxjs';
 import { CustomException } from 'src/app/shared/exceptions/custom.exception';
@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
   templateUrl: './user.component.html',
   styleUrls: ['./user.component.css'],
 })
-export class UserComponent implements OnInit {
+export class UserComponent {
   public me: IUser;
   constructor(
     private userService: UsersService,
@@ -22,7 +22,7 @@ export class UserComponent implements OnInit {
     this.userService
       .info(this.storageService.getToken())
       .pipe(
-        map((user: IUser) => (this.me = user)),
+        tap((user: IUser) => (this.me = user)),
         catchError((error) => {
           this.logout();
           return throwError(error);
@@ -30,8 +30,6 @@ export class UserComponent implements OnInit {
       )
       .subscribe({ error: (error) => new CustomException(error.error) });
   }
-
-  ngOnInit(): void {}
 
   logout() {
     this.userService.logout();
