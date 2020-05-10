@@ -17,13 +17,12 @@ import { CartComponent } from './shared/components/cart/cart.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { DateRankingPipe } from './shared/pipes/date-ranking/date-ranking.pipe';
 import { NoRepeatPipe } from './shared/pipes/no-repeat/no-repeat.pipe';
-import { LoginComponent } from './views/login/login.component';
-import { LoginFormComponent } from './shared/components/login-form/login-form.component';
-import { RegisterFormComponent } from './shared/components/register-form/register-form.component';
+
 import { UserComponent } from './views/user/user.component';
 import { UserCardComponent } from './shared/components/user-card/user-card.component';
 import { SelectFighterComponent } from './shared/components/select-fighter/select-fighter.component';
 import { ResultFightComponent } from './shared/components/result-fight/result-fight.component';
+import { LoginModule } from './views/login/login.module';
 
 @NgModule({
   declarations: [
@@ -39,9 +38,6 @@ import { ResultFightComponent } from './shared/components/result-fight/result-fi
     CartComponent,
     DateRankingPipe,
     NoRepeatPipe,
-    LoginComponent,
-    LoginFormComponent,
-    RegisterFormComponent,
     UserComponent,
     UserCardComponent,
     SelectFighterComponent,
@@ -55,6 +51,7 @@ import { ResultFightComponent } from './shared/components/result-fight/result-fi
     FontAwesomeModule,
     FormsModule,
     ReactiveFormsModule,
+    LoginModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
