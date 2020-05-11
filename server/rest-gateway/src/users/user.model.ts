@@ -13,3 +13,8 @@ export interface IUserLogin {
   alias: string;
   password: string;
 }
+
+export interface IModifyUser {
+  user: IUser;
+  passwordToCheck: string;
+}
