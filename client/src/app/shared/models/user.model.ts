@@ -12,3 +12,8 @@ export interface IUser {
   gender: string;
   email: string;
 }
+
+export interface IModifyUser {
+  user: IUser;
+  passwordToCheck?: string;
+}
