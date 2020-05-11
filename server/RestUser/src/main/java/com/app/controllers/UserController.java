@@ -37,7 +37,7 @@ public class UserController {
 	@GetMapping("/id/{id}") 
 	public ResponseEntity<?> getOneById(@PathVariable Long id) {
 		Optional<User> result = userRepository.findById(id);
-		if(result.isEmpty()) return new ResponseEntity<ErrorRest>(new ErrorRest("No hay usuario con el ID "+id),HttpStatus.NOT_FOUND);
+		if(result.isEmpty()) return new ResponseEntity<ErrorRest>(new ErrorRest("No existe ese usuario"),HttpStatus.NOT_FOUND);
 			return new ResponseEntity<Optional<User>>(result,HttpStatus.OK);
 		
 	}
@@ -45,7 +45,7 @@ public class UserController {
 	@GetMapping("/name/{alias}") 
 	public ResponseEntity<?> getOneByAlias(@PathVariable String alias) {
 		User result = userRepository.findByAlias(alias);
-		if(result == null) return new ResponseEntity<ErrorRest>(new ErrorRest("No hay usuario con el nombre "+alias),HttpStatus.NOT_FOUND);
+		if(result == null) return new ResponseEntity<ErrorRest>(new ErrorRest("No existe ese usuario"),HttpStatus.NOT_FOUND);
 			return new ResponseEntity<User>(result,HttpStatus.OK);
 		
 	}
@@ -55,7 +55,7 @@ public class UserController {
 		User user = reqUser.getBody();
 		if(user.getAlias().isBlank() || user.getPassword().isBlank() || user.getBirthdate() == null || user.getEmail().isBlank() || user.getName().isBlank() || user.getSurname().isBlank())  return new ResponseEntity<ErrorRest>(new ErrorRest("Usuario mal formado"),HttpStatus.BAD_REQUEST);
 		
-		if(userRepository.findById(user.getId()).isPresent() && user.getId() != 0) return new ResponseEntity<ErrorRest>(new ErrorRest("El usuario con ID " + user.getId() + " ya existe"),
+		if(userRepository.findById(user.getId()).isPresent() && user.getId() != 0) return new ResponseEntity<ErrorRest>(new ErrorRest("El usuario ya existe"),
 				HttpStatus.CONFLICT); 
 		
 		if(userRepository.findByEmail(user.getEmail()) != null) return new ResponseEntity<ErrorRest>(new ErrorRest("El usuario con email " + user.getEmail() + " ya existe"),
@@ -75,7 +75,7 @@ public class UserController {
 		
 		if(userRepository.findById(user.getId()).isPresent() && user.getId() != 0) return new ResponseEntity<User>(userRepository.save(user), HttpStatus.OK);
 			
-		return new ResponseEntity<ErrorRest>(new ErrorRest("El usuario con ID " + user.getId() + " no existe"),
+		return new ResponseEntity<ErrorRest>(new ErrorRest("No existe ese usuario"),
 				HttpStatus.NOT_FOUND); 
 		
 	}
@@ -87,7 +87,7 @@ public class UserController {
 			userRepository.deleteById(id);
 			return new ResponseEntity<ErrorRest>(new ErrorRest("Usuario borrado correctamente"), HttpStatus.OK);
 		}
-		return new ResponseEntity<ErrorRest>(new ErrorRest("El usuario con el ID:"+id+" no existe"),
+		return new ResponseEntity<ErrorRest>(new ErrorRest("No existe ese usuario"),
 				HttpStatus.NOT_FOUND); 
 	}
 	
