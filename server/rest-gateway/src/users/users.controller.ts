@@ -78,11 +78,19 @@ export class UsersController {
       .getByAlias(userToModify.user.alias)
       .pipe(
         switchMap((userBd: IUser) => {
-          userToModify.user.password = userBd.password;
-          userBd.password = this.cryptoService.decrypt(userBd.password);
-          if (userToModify.passwordToCheck !== userBd.password)
+          if (
+            userToModify.passwordToCheck !==
+            this.cryptoService.decrypt(userBd.password)
+          )
             return throwError(new PasswordError());
+          userToModify.user.password = this.cryptoService.encrypt(
+            userToModify.user.password,
+          );
           return this.usersService.modify(userToModify.user);
+        }),
+        map((user: IUser) => {
+          user.password = '';
+          return user;
         }),
       )
       .subscribe(
