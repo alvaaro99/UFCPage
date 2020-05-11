@@ -36,7 +36,7 @@ export class SimulatorComponent implements OnInit {
     this.simulatorService
       .simulate(this.redFighter, this.blueFighter)
       .pipe(
-        delay(1500),
+        delay(1000),
         tap((fight: IFight) => {
           loadingAlert.close();
           this.resultFight = fight;
