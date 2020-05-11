@@ -39,6 +39,8 @@ services:
       dockerfile: Dockerfile
     ports:
       - '9997:9997'
+    depends_on:
+      - db-users
 
   app-products:
     container_name: app-products
@@ -48,6 +50,8 @@ services:
       dockerfile: Dockerfile
     ports:
       - '9998:9998'
+    depends_on:
+      - db-products
 
   app-ranking:
     container_name: app-ranking
@@ -57,6 +61,8 @@ services:
       dockerfile: Dockerfile
     ports:
       - '9996:80'
+    depends_on:
+      - db-fighters-ranking
 
   app-simulator:
     container_name: app-simulator
@@ -66,6 +72,8 @@ services:
       dockerfile: Dockerfile
     ports:
       - '9995:80'
+    depends_on:
+      - db-fighters-ranking
 
   app-auth:
     container_name: app-auth
