@@ -13,6 +13,7 @@ export const environment = {
   ENDPOINT_LOGIN: 'login/',
   ENDPOINT_REGISTER: 'register/',
   ENDPOINT_ME: 'me/',
+  ENDPOINT_MODIFY: 'modify/',
   ENDPOINT_SIMULATOR: 'simulator',
 };
 
