@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { RankingService } from 'src/app/shared/services/ranking/ranking.service';
 import { CustomException } from 'src/app/shared/exceptions/custom.exception';
+import { LoadingAlert } from 'src/app/shared/alerts/loading.alert';
+import { tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-ranking',
@@ -20,9 +22,12 @@ export class RankingComponent implements OnInit {
   }
 
   getAll() {
-    if (this.rankingService.ranking.length === 0)
+    if (this.rankingService.ranking.length === 0) {
+      const alert = new LoadingAlert();
       this.rankingService
         .getAll()
+        .pipe(tap(() => alert.close()))
         .subscribe({ error: (error) => new CustomException(error.error) });
+    }
   }
 }
