@@ -28,9 +28,11 @@ export class UserCardComponent {
   });
 
   modifyEmail() {
-    this.user.email = this.formNewEmail.value.newEmail;
+    const user = { ...this.user };
+    user.email = this.formNewEmail.value.newEmail;
+    user.password = this.formNewEmail.value.password;
     this.onModifyUser.emit({
-      user: this.user,
+      user,
       passwordToCheck: this.formNewEmail.value.password,
     });
     this.formNewEmail.reset();
@@ -38,9 +40,10 @@ export class UserCardComponent {
   }
 
   modifyPassword() {
-    this.user.password = this.formNewPassword.value.newPassword;
+    const user = { ...this.user };
+    user.password = this.formNewPassword.value.newPassword;
     this.onModifyUser.emit({
-      user: this.user,
+      user,
       passwordToCheck: this.formNewPassword.value.password,
     });
     this.formNewPassword.reset();
