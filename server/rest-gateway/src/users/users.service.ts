@@ -37,4 +37,14 @@ export class UsersService {
           : throwError(error.response),
       ),
     );
+
+  modify = (user: IUser) =>
+    this.httpClient.put(process.env.USERS_URL, user).pipe(
+      map(response => response.data),
+      catchError(error =>
+        !error.response
+          ? throwError(new NotFoundError())
+          : throwError(error.response),
+      ),
+    );
 }
