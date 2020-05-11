@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { LocalStorageService } from 'src/app/shared/services/localstorage/local-storage.service';
 import { UsersService } from 'src/app/shared/services/users/users.service';
 import { catchError, tap } from 'rxjs/operators';
 import { IUser, IModifyUser } from 'src/app/shared/models/user.model';
@@ -35,13 +34,7 @@ export class UserComponent {
   modify(modifyUser: IModifyUser) {
     this.userService
       .modify(modifyUser)
-      .pipe(
-        tap((user: IUser) => (this.me = user))
-        /*catchError((error) => {
-          this.logout();
-          return throwError(error);
-        })*/
-      )
+      .pipe(tap((user: IUser) => (this.me = user)))
       .subscribe({ error: (error) => new CustomException(error.error) });
   }
 }
