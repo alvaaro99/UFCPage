@@ -75,3 +75,12 @@ services:
       dockerfile: Dockerfile
     ports:
       - '9999:9999'
+
+  app-gateway:
+    container_name: app-gateway
+    restart: always
+    build:
+      context: ./rest-gateway
+      dockerfile: Dockerfile
+    ports:
+      - '9990:9990'
