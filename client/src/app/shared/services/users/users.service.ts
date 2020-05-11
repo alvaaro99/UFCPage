@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ILoginUser, IUser } from '../../models/user.model';
+import { ILoginUser, IUser, IModifyUser } from '../../models/user.model';
 import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { LocalStorageService } from '../localstorage/local-storage.service';
@@ -39,11 +39,20 @@ export class UsersService {
       user
     );
 
-  info = (token: string) =>
+  info = () =>
     this.http.get(
       environment.GATEWAY_URL +
         environment.ENDPOINT_USERS +
         environment.ENDPOINT_ME,
-      { headers: { authorization: token } }
+      { headers: { authorization: this.storageService.getToken() } }
+    );
+
+  modify = (userToModify: IModifyUser) =>
+    this.http.put(
+      environment.GATEWAY_URL +
+        environment.ENDPOINT_USERS +
+        environment.ENDPOINT_MODIFY,
+      userToModify,
+      { headers: { authorization: this.storageService.getToken() } }
     );
 }
