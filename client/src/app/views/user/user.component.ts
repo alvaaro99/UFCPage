@@ -5,6 +5,7 @@ import { IUser, IModifyUser } from 'src/app/shared/models/user.model';
 import { throwError } from 'rxjs';
 import { CustomException } from 'src/app/shared/exceptions/custom.exception';
 import { Router } from '@angular/router';
+import { SuccessAlert } from 'src/app/shared/alerts/success.alert';
 
 @Component({
   selector: 'app-user',
@@ -34,7 +35,12 @@ export class UserComponent {
   modify(modifyUser: IModifyUser) {
     this.userService
       .modify(modifyUser)
-      .pipe(tap((user: IUser) => (this.me = user)))
+      .pipe(
+        tap((user: IUser) => {
+          new SuccessAlert('Usuario Modificado');
+          this.me = user;
+        })
+      )
       .subscribe({ error: (error) => new CustomException(error.error) });
   }
 }
