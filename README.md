@@ -15,6 +15,7 @@ Then, we need get up the client.
 In client folder, run:
 
 ```bash
+npm install
 npm start
 ```
 
