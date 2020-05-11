@@ -6,9 +6,10 @@ import {
   Res,
   Req,
   HttpStatus,
+  Put,
 } from '@nestjs/common';
 import { UsersService } from './users.service';
-import { IUser, IUserLogin } from './user.model';
+import { IUser, IUserLogin, IModifyUser } from './user.model';
 import { Response, Request } from 'express';
 import { map, switchMap, tap } from 'rxjs/operators';
 import { AuthService } from 'src/services/auth/auth.service';
@@ -67,6 +68,25 @@ export class UsersController {
       .pipe(switchMap((user: IUser) => this.authService.createToken(user)))
       .subscribe(
         (token: string) => res.status(HttpStatus.CREATED).send(token),
+        (error: IAxiosError) => res.status(error.status).send(error.data),
+      );
+  }
+
+  @Put('/modify')
+  modify(@Body() userToModify: IModifyUser, @Res() res: Response) {
+    this.usersService
+      .getByAlias(userToModify.user.alias)
+      .pipe(
+        switchMap((userBd: IUser) => {
+          userToModify.user.password = userBd.password;
+          userBd.password = this.cryptoService.decrypt(userBd.password);
+          if (userToModify.passwordToCheck !== userBd.password)
+            return throwError(new PasswordError());
+          return this.usersService.modify(userToModify.user);
+        }),
+      )
+      .subscribe(
+        (userModified: IUser) => res.status(HttpStatus.OK).send(userModified),
         (error: IAxiosError) => res.status(error.status).send(error.data),
       );
   }
