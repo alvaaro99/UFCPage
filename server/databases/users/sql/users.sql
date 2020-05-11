@@ -16,4 +16,4 @@ create table user
 );
 
 
-INSERT INTO USERS.user (id, birthdate, password, alias, gender, name, surname, email) VALUES (1, '1999-08-21', 0xDC80813C87DB4C67FCEC08880D35701A, 'admin', null, 'Admin', 'Admin', 'admin@admin.com');
+INSERT INTO USERS.user (id, alias, birthdate, email, gender, name, password, surname) VALUES (0, 'admin', '1999-08-21 00:00:00', 'admin@admin', 'H', 'admin', '¡êY=ÀaÈcÝh1ˆ\\{€õ†Õ¤½9y_ÑÅübTç…3\\àÍèÚ', 'admin');
