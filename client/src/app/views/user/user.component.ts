@@ -47,4 +47,8 @@ export class UserComponent {
       )
       .subscribe({ error: (error) => new CustomException(error.error) });
   }
+
+  delete(password: string) {
+    //this.userService.
+  }
 }
