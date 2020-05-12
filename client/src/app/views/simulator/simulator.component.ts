@@ -2,9 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { CustomException } from 'src/app/shared/exceptions/custom.exception';
 import { SimulatorService } from 'src/app/shared/services/simulator/simulator.service';
 import { IFighter } from 'src/app/shared/models/fighter.model';
-import { tap, delay } from 'rxjs/operators';
+import { tap, delay, catchError } from 'rxjs/operators';
 import { IFight } from 'src/app/shared/models/fight.model';
 import { LoadingAlert } from 'src/app/shared/alerts/loading.alert';
+import { UsersService } from 'src/app/shared/services/users/users.service';
+import { Router } from '@angular/router';
+import { throwError } from 'rxjs';
 
 @Component({
   selector: 'app-simulator',
@@ -18,7 +21,11 @@ export class SimulatorComponent implements OnInit {
   public blueFighter: IFighter = null;
   public resultFight: IFight = null;
 
-  constructor(public simulatorService: SimulatorService) {}
+  constructor(
+    public simulatorService: SimulatorService,
+    private router: Router,
+    private userService: UsersService
+  ) {}
 
   ngOnInit(): void {
     this.getAll();
@@ -27,6 +34,15 @@ export class SimulatorComponent implements OnInit {
     if (this.simulatorService.fighters.length === 0) {
       this.simulatorService
         .getAll()
+        .pipe(
+          catchError((error) => {
+            this.userService.logout();
+            this.router.navigate(['/login'], {
+              queryParams: { returnUrl: '/simulator' },
+            });
+            return throwError(error);
+          })
+        )
         .subscribe({ error: (error) => new CustomException(error.error) });
     }
   }
@@ -40,6 +56,13 @@ export class SimulatorComponent implements OnInit {
         tap((fight: IFight) => {
           loadingAlert.close();
           this.resultFight = fight;
+        }),
+        catchError((error) => {
+          this.userService.logout();
+          this.router.navigate(['/login'], {
+            queryParams: { returnUrl: '/simulator' },
+          });
+          return throwError(error);
         })
       )
       .subscribe({
