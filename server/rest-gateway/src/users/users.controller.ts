@@ -7,6 +7,7 @@ import {
   Req,
   HttpStatus,
   Put,
+  Delete,
 } from '@nestjs/common';
 import { UsersService } from './users.service';
 import { IUser, IUserLogin, IModifyUser } from './user.model';
@@ -83,8 +84,10 @@ export class UsersController {
       .pipe(
         switchMap((userBd: IUser) => {
           if (
-            userToModify.passwordToCheck !==
-            this.cryptoService.decrypt(userBd.password)
+            !this.usersService.isSamePasswords(
+              userToModify.passwordToCheck,
+              this.cryptoService.decrypt(userBd.password),
+            )
           )
             return throwError(new PasswordError());
           userToModify.user.password = this.cryptoService.encrypt(
