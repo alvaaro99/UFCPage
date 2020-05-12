@@ -1,4 +1,8 @@
 <div class="text-right">
   <button class="btn btn-danger" (click)="logout()">LogOut</button>
 </div>
-<app-user-card [user]="me" (onModifyUser)="modify($event)"></app-user-card>
+<app-user-card
+  [user]="me"
+  (onModifyUser)="modify($event)"
+  (onDeleteUser)="delete($event)"
+></app-user-card>
