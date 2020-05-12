@@ -48,6 +48,9 @@ export class UsersService {
       ),
     );
 
+  delete = (id: number) =>
+    this.httpClient.delete(`${process.env.USERS_URL}/${id}`);
+
   isSamePasswords = (password1: string, password2: string) =>
     password1 === password2 ? true : false;
 }
