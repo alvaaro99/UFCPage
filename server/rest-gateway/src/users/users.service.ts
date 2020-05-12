@@ -47,4 +47,7 @@ export class UsersService {
           : throwError(error.response),
       ),
     );
+
+  isSamePasswords = (password1: string, password2: string) =>
+    password1 === password2 ? true : false;
 }
