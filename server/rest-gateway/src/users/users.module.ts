@@ -17,6 +17,8 @@ import { CryptoService } from 'src/services/crypto/crypto.service';
 })
 export class UsersModule implements NestModule {
   configure(consumer: MiddlewareConsumer) {
-    consumer.apply(GetDecodedTokenMiddleware).forRoutes('users/me');
+    consumer
+      .apply(GetDecodedTokenMiddleware)
+      .forRoutes('users/me', 'users/modify');
   }
 }
