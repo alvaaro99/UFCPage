@@ -14,6 +14,7 @@ export const environment = {
   ENDPOINT_REGISTER: 'register/',
   ENDPOINT_ME: 'me/',
   ENDPOINT_MODIFY: 'modify/',
+  ENDPOINT_DELETE: 'delete/',
   ENDPOINT_SIMULATOR: 'simulator',
 };
 
