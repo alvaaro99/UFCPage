@@ -8,6 +8,7 @@ import {
   HttpStatus,
   Put,
   Delete,
+  Param,
 } from '@nestjs/common';
 import { UsersService } from './users.service';
 import { IUser, IUserLogin, IModifyUser } from './user.model';
@@ -104,5 +105,32 @@ export class UsersController {
         (userModified: IUser) => res.status(HttpStatus.OK).send(userModified),
         (error: IAxiosError) => res.status(error.status).send(error.data),
       );
+  }
+
+  @Delete('/delete')
+  delete(
+    @Param('password') passwordUser: string,
+    @Res() res: Response,
+    @Req() req: Request,
+  ) {
+    console.log(passwordUser);
+    /*this.usersService
+      .getById(+req.headers.authorization['id'])
+      .pipe(
+        switchMap((userBd: IUser) => {
+          if (
+            !this.usersService.isSamePasswords(
+              passwordUser,
+              this.cryptoService.decrypt(userBd.password),
+            )
+          )
+            return throwError(new PasswordError());
+          return this.usersService.delete(userBd.id);
+        }),
+      )
+      .subscribe(
+        message => res.status(HttpStatus.OK).send(message),
+        (error: IAxiosError) => res.status(error.status).send(error.data),
+      );*/
   }
 }
