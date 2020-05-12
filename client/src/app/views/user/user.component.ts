@@ -39,6 +39,10 @@ export class UserComponent {
         tap((user: IUser) => {
           new SuccessAlert('Usuario Modificado');
           this.me = user;
+        }),
+        catchError((error) => {
+          if (error.error.message !== 'Contraseña Incorrecta') this.logout();
+          return throwError(error);
         })
       )
       .subscribe({ error: (error) => new CustomException(error.error) });
