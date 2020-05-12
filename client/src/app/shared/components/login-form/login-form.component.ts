@@ -6,7 +6,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
   templateUrl: './login-form.component.html',
   styleUrls: ['./login-form.component.css'],
 })
-export class LoginFormComponen {
+export class LoginFormComponent {
   @Output() onLogin = new EventEmitter<FormGroup>();
   userData: FormGroup;
   constructor() {
