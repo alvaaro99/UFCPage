@@ -55,4 +55,13 @@ export class UsersService {
       userToModify,
       { headers: { authorization: this.storageService.getToken() } }
     );
+
+  delete = (password: string) =>
+    this.http.delete(
+      environment.GATEWAY_URL +
+        environment.ENDPOINT_USERS +
+        environment.ENDPOINT_DELETE +
+        password,
+      { headers: { authorization: this.storageService.getToken() } }
+    );
 }
