@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
@@ -6,7 +6,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
   templateUrl: './register-form.component.html',
   styleUrls: ['./register-form.component.css'],
 })
-export class RegisterFormComponent implements OnInit {
+export class RegisterFormComponent {
   @Output() onRegister = new EventEmitter<FormGroup>();
   userData: FormGroup;
   constructor() {
@@ -40,7 +40,6 @@ export class RegisterFormComponent implements OnInit {
       gender: new FormControl(),
     });
   }
-  ngOnInit(): void {}
 
   registerUser() {
     this.onRegister.emit(this.userData.value);

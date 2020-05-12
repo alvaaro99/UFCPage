@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { UsersService } from 'src/app/shared/services/users/users.service';
 import { catchError, tap } from 'rxjs/operators';
 import { IUser, IModifyUser } from 'src/app/shared/models/user.model';

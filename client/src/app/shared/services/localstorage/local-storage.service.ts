@@ -5,7 +5,6 @@ import { Injectable } from '@angular/core';
 })
 export class LocalStorageService {
   keyToken: string = 'authToken';
-  constructor() {}
 
   saveToken = (token: string) => localStorage.setItem(this.keyToken, token);
 

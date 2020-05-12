@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { CartService } from '../../services/cart/cart.service';
 import { environment } from 'src/environments/environment';
 import {
@@ -14,7 +14,7 @@ import {
   templateUrl: './cart.component.html',
   styleUrls: ['./cart.component.css'],
 })
-export class CartComponent implements OnInit {
+export class CartComponent {
   imageServerURL: string;
   iconCart: IconDefinition;
   iconRemove: IconDefinition;
@@ -27,6 +27,4 @@ export class CartComponent implements OnInit {
     this.IconPlus = faPlusCircle;
     this.imageServerURL = environment.PRODUCT_URL;
   }
-
-  ngOnInit(): void {}
 }

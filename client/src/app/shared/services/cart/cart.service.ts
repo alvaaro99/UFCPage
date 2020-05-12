@@ -7,8 +7,6 @@ import { IProduct } from '../../models/product.model';
 export class CartService {
   cart: IProduct[] = [];
 
-  constructor() {}
-
   addToCart = (product: IProduct) => {
     this.isProductInCart(product)
       ? this.addQuantity(product)

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { IFight } from '../../models/fight.model';
 
 @Component({
@@ -6,13 +6,10 @@ import { IFight } from '../../models/fight.model';
   templateUrl: './result-fight.component.html',
   styleUrls: ['./result-fight.component.css'],
 })
-export class ResultFightComponent implements OnInit {
+export class ResultFightComponent {
   @Input() resultFight: IFight = null;
   @Output() onNewFight = new EventEmitter();
   @Output() onRepeatFight = new EventEmitter();
-  constructor() {}
-
-  ngOnInit(): void {}
 
   repeatFight() {
     this.onRepeatFight.emit('repeat');

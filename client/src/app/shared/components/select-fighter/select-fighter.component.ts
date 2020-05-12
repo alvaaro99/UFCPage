@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { IFighter } from '../../models/fighter.model';
 
 @Component({
@@ -6,7 +6,7 @@ import { IFighter } from '../../models/fighter.model';
   templateUrl: './select-fighter.component.html',
   styleUrls: ['./select-fighter.component.css'],
 })
-export class SelectFighterComponent implements OnInit {
+export class SelectFighterComponent {
   @Input() fighters: IFighter[];
   @Output() onSelectFighter = new EventEmitter<IFighter>();
   fighterSelected: IFighter;
@@ -18,6 +18,4 @@ export class SelectFighterComponent implements OnInit {
   emitFighter() {
     this.onSelectFighter.emit(this.fighterSelected);
   }
-
-  ngOnInit(): void {}
 }
