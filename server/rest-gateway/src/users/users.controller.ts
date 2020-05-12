@@ -73,9 +73,13 @@ export class UsersController {
   }
 
   @Put('/modify')
-  modify(@Body() userToModify: IModifyUser, @Res() res: Response) {
+  modify(
+    @Body() userToModify: IModifyUser,
+    @Res() res: Response,
+    @Req() req: Request,
+  ) {
     this.usersService
-      .getByAlias(userToModify.user.alias)
+      .getById(+req.headers.authorization['id'])
       .pipe(
         switchMap((userBd: IUser) => {
           if (
