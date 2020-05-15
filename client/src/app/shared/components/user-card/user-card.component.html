@@ -19,7 +19,7 @@
           *ngIf="changingEmail === false"
           type="button"
           class="btn btn-outline-warning"
-          (click)="changeEmail()"
+          (click)="changingEmail = true"
         >
           Cambiar
         </button>
@@ -72,7 +72,7 @@
           *ngIf="changingPass === false"
           type="button"
           class="btn btn-outline-warning"
-          (click)="changePass()"
+          (click)="changingPass = true"
         >
           Cambiar
         </button>
@@ -121,4 +121,36 @@
       </li>
     </ul>
   </div>
+  <button
+    (click)="deletingUser = true"
+    *ngIf="deletingUser === false"
+    type="button"
+    class="btn btn-outline-danger"
+  >
+    ELIMINAR CUENTA
+  </button>
+  <form *ngIf="deletingUser === true" (submit)="deleteUser(pass.value)">
+    <input
+      #pass
+      type="password"
+      class="form-control"
+      placeholder="Introduzca su contraseña"
+    />
+    <button
+      (click)="deletingUser = false"
+      *ngIf="deletingUser === true"
+      type="button"
+      class="btn btn-outline-primary"
+    >
+      Cancelar
+    </button>
+    <button
+      (click)="deleteUser(pass.value)"
+      *ngIf="deletingUser === true"
+      type="submit"
+      class="btn btn-outline-danger"
+    >
+      ELIMINAR CUENTA
+    </button>
+  </form>
 </div>
