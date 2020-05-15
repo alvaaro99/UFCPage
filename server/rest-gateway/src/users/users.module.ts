@@ -19,6 +19,6 @@ export class UsersModule implements NestModule {
   configure(consumer: MiddlewareConsumer) {
     consumer
       .apply(GetDecodedTokenMiddleware)
-      .forRoutes('users/me', 'users/modify');
+      .forRoutes('users/me', 'users/modify', 'users/delete');
   }
 }
