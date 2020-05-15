@@ -62,6 +62,8 @@ export class UsersService {
         environment.ENDPOINT_USERS +
         environment.ENDPOINT_DELETE +
         password,
-      { headers: { authorization: this.storageService.getToken() } }
+      {
+        headers: { authorization: this.storageService.getToken() },
+      }
     );
 }
