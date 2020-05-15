@@ -49,6 +49,11 @@ export class UserComponent {
   }
 
   delete(password: string) {
-    //this.userService.
+    this.userService
+      .delete(password)
+      .pipe(tap((message) => console.log(message)))
+      .subscribe({
+        error: (error) => new CustomException(error.error),
+      });
   }
 }
