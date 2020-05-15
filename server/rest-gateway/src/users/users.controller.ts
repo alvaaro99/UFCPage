@@ -107,20 +107,19 @@ export class UsersController {
       );
   }
 
-  @Delete('/delete')
+  @Delete('/delete/:password')
   delete(
-    @Param('password') passwordUser: string,
+    @Param('password') password: string,
     @Res() res: Response,
     @Req() req: Request,
   ) {
-    console.log(passwordUser);
-    /*this.usersService
+    this.usersService
       .getById(+req.headers.authorization['id'])
       .pipe(
         switchMap((userBd: IUser) => {
           if (
             !this.usersService.isSamePasswords(
-              passwordUser,
+              password,
               this.cryptoService.decrypt(userBd.password),
             )
           )
@@ -131,6 +130,6 @@ export class UsersController {
       .subscribe(
         message => res.status(HttpStatus.OK).send(message),
         (error: IAxiosError) => res.status(error.status).send(error.data),
-      );*/
+      );
   }
 }
