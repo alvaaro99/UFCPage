@@ -11,7 +11,9 @@ export class UserCardComponent {
   @Input() user: IUser;
   changingEmail: boolean = false;
   changingPass: boolean = false;
+  deletingUser: boolean = false;
   @Output() onModifyUser = new EventEmitter<IModifyUser>();
+  @Output() onDeleteUser = new EventEmitter<string>();
   formNewEmail = new FormGroup({
     newEmail: new FormControl(
       '',
@@ -58,11 +60,10 @@ export class UserCardComponent {
     this.changingPass = false;
   }
 
-  changeEmail() {
-    this.changingEmail = true;
+  cancelDeletingUser() {
+    this.deletingUser = false;
   }
-
-  changePass() {
-    this.changingPass = true;
+  deleteUser(password: string) {
+    this.onDeleteUser.emit(password);
   }
 }
