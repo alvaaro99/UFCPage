@@ -138,7 +138,6 @@
     />
     <button
       (click)="deletingUser = false"
-      *ngIf="deletingUser === true"
       type="button"
       class="btn btn-outline-primary"
     >
@@ -146,7 +145,6 @@
     </button>
     <button
       (click)="deleteUser(pass.value)"
-      *ngIf="deletingUser === true"
       type="submit"
       class="btn btn-outline-danger"
     >
