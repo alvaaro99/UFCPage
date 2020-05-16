@@ -2,9 +2,9 @@
 
 ## Run Project
 
-First we need get up the server. 
+First we need get up the server.
 
-In server folder,run: 
+In server folder, run:
 
 ```bash
 docker-compose up --build
@@ -19,12 +19,11 @@ npm install
 npm start
 ```
 
-
 ## Information
 
 Requirements for the project:
 
- - docker
- - docker-compose
- - npm
- - node
+- docker
+- docker-compose
+- npm
+- node
