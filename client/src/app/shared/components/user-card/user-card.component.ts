@@ -65,5 +65,6 @@ export class UserCardComponent {
   }
   deleteUser(password: string) {
     this.onDeleteUser.emit(password);
+    this.cancelDeletingUser();
   }
 }
