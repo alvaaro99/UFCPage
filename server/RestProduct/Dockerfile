@@ -1,4 +1,10 @@
 FROM openjdk:11.0.7-slim
-ARG JAR_FILE=target/*.jar
-COPY ${JAR_FILE} app.jar
-ENTRYPOINT ["java","-jar","/app.jar"]
+
+COPY ./ /var/products
+WORKDIR /var/products
+
+RUN tar xzvf ./src/main/resources/libs/apache-maven-3.6.3-bin.tar.gz
+
+RUN ./apache-maven-3.6.3/bin/mvn package
+
+ENTRYPOINT ["java","-jar","target/RestProduct-0.0.1-SNAPSHOT.jar"]
