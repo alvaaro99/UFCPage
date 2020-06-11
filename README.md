@@ -21,7 +21,7 @@ npm start
 
 ## Information
 
-Requirements for the project:
+Requirements:
 
 - docker
 - docker-compose
