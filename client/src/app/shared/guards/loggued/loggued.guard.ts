@@ -7,7 +7,6 @@ import {
 } from '@angular/router';
 
 import { UsersService } from '../../services/users/users.service';
-import { LocalStorageService } from '../../services/localstorage/local-storage.service';
 
 @Injectable({
   providedIn: 'root',
